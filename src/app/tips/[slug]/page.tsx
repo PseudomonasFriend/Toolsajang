@@ -53,17 +53,17 @@ export default async function TipDetailPage({ params }: Props) {
     <div className="mx-auto max-w-[720px] px-4 py-8 pb-24">
       <JsonLd data={articleJsonLd} />
       <article>
-        <header className="mb-6">
+        <header className="mb-8 border-b border-gray-200 pb-6">
           <p className="text-sm text-gray-500">{tip.meta.date}</p>
-          <h1 className="mt-1 text-2xl font-bold text-gray-900">
+          <h1 className="mt-2 text-2xl font-bold leading-snug text-gray-900">
             {tip.meta.title}
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-base leading-relaxed text-gray-600">
             {tip.meta.description}
           </p>
         </header>
 
-        <div className="prose prose-gray max-w-none prose-p:text-gray-700 prose-headings:text-gray-900">
+        <div className="tip-content">
           <MDXRemote source={tip.content} />
         </div>
 

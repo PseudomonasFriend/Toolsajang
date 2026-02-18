@@ -25,3 +25,76 @@
     -moz-appearance: textfield;
   }
 }
+
+/* 장사 팁 본문 가독성 */
+.tip-content {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #374151;
+}
+
+.tip-content > * + * {
+  margin-top: 1.25em;
+}
+
+.tip-content p {
+  margin-bottom: 0;
+  word-break: keep-all;
+}
+
+.tip-content p + p {
+  margin-top: 1.35em;
+}
+
+.tip-content h2 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #111827;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tip-content h2:first-child {
+  margin-top: 0;
+}
+
+.tip-content h3 {
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.tip-content ul,
+.tip-content ol {
+  margin-top: 1em;
+  margin-bottom: 0;
+  padding-left: 1.4em;
+}
+
+.tip-content li {
+  margin-top: 0.45em;
+}
+
+.tip-content li:first-child {
+  margin-top: 0;
+}
+
+.tip-content strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.tip-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tip-content a:hover {
+  color: #1d4ed8;
+}
