@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/', label: '홈', icon: Home },
   { href: '/tools', label: '툴', icon: Wrench },
-  { href: '/blog', label: '콘텐츠', icon: FileText },
+  { href: '/tips', label: '장사 팁', icon: FileText },
   { href: '/about', label: '소개', icon: Info },
 ];
 

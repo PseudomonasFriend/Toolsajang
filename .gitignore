@@ -42,5 +42,8 @@ next-env.d.ts
 .vscode/
 *.code-workspace
 
+# pnpm/git 임시
+_tmp_*
+
 # 기타
 *.log

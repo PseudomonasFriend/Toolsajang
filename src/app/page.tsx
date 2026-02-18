@@ -1,8 +1,13 @@
+import Link from 'next/link';
 import { tools } from '@/data/tools';
 import ToolCard from '@/components/tools/ToolCard';
+import TipCard from '@/components/tips/TipCard';
 import AdBanner from '@/components/common/AdBanner';
+import { getLatestTips } from '@/lib/tips';
 
 export default function HomePage() {
+  const latestTips = getLatestTips(3);
+
   return (
     <div className="mx-auto max-w-[480px] px-4 py-8">
       {/* 히어로 섹션 */}
@@ -29,6 +34,34 @@ export default function HomePage() {
 
       {/* 광고 슬롯 A */}
       <AdBanner position="home-mid" type="adsense" className="mb-6" />
+
+      {/* 장사 팁 미리보기 */}
+      <section className="mb-6" aria-label="최신 장사 팁">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-gray-900">장사 팁</h2>
+          {latestTips.length > 0 && (
+            <Link
+              href="/tips"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              전체 보기
+            </Link>
+          )}
+        </div>
+        {latestTips.length === 0 ? (
+          <div className="rounded-xl bg-white p-6 text-center shadow-sm">
+            <p className="text-sm text-gray-500">
+              알찬 콘텐츠를 준비하고 있습니다.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {latestTips.map((tip) => (
+              <TipCard key={tip.slug} tip={tip} />
+            ))}
+          </div>
+        )}
+      </section>
 
       {/* 광고 슬롯 B */}
       <AdBanner position="home-bottom" type="custom" />

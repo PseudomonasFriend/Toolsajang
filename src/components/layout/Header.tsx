@@ -4,6 +4,7 @@ import { Wrench } from 'lucide-react';
 const navItems = [
   { href: '/', label: '홈' },
   { href: '/tools', label: '툴' },
+  { href: '/tips', label: '장사 팁' },
   { href: '/about', label: '소개' },
 ];
 

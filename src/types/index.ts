@@ -37,7 +37,7 @@ export interface CustomAd {
   position: string[];
 }
 
-/** 블로그 포스트 메타 */
+/** 블로그/장사 팁 포스트 메타 */
 export interface BlogPost {
   slug: string;
   title: string;
@@ -50,5 +50,8 @@ export interface BlogPost {
   published: boolean;
   relatedTools?: string[];
 }
+
+/** 장사 팁 포스트 (BlogPost와 동일 구조) */
+export type TipPost = BlogPost;
 
 /* 툴별 전용 타입은 각 툴 폴더의 types.ts에 정의 */

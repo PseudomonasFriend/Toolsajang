@@ -3,6 +3,25 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileNav from '@/components/layout/MobileNav';
+import JsonLd from '@/components/common/JsonLd';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || '툴사장';
+
+const webSiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: '소상공인·자영업자를 위한 무료 비즈니스 계산 도구',
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +52,27 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <JsonLd data={webSiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
+        {/* Google Analytics 4 */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
         {/* AdSense 스크립트 — 승인 후 NEXT_PUBLIC_ADSENSE_ID 설정 */}
         {process.env.NEXT_PUBLIC_ADSENSE_ID && (
           <script

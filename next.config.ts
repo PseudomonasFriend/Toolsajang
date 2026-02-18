@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* 추후 설정 추가 */
+  transpilePackages: ['next-mdx-remote'],
 };
 
 export default nextConfig;
