@@ -7,6 +7,7 @@ export const meta: Tool = {
   description: '목표일까지 며칠 남았는지 한눈에',
   icon: 'CalendarDays',
   category: '유틸리티',
+  isNew: true,
   isActive: true,
 };
 

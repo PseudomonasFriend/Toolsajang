@@ -7,6 +7,7 @@ export const meta: Tool = {
   description: '목표 순이익 달성에 필요한 매출 역산',
   icon: 'Target',
   category: '재무/회계',
+  isNew: true,
   isActive: true,
 };
 

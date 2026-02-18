@@ -7,6 +7,7 @@ export const meta: Tool = {
   description: 'URL·텍스트로 QR코드 만들고 다운로드',
   icon: 'QrCode',
   category: '유틸리티',
+  isNew: true,
   isActive: true,
 };
 

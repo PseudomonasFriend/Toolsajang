@@ -7,6 +7,7 @@ export const meta: Tool = {
   description: '매출 대비 임대료가 몇 %인지 한눈에',
   icon: 'Building2',
   category: '매장운영',
+  isNew: true,
   isActive: true,
 };
 
