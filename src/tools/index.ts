@@ -9,6 +9,11 @@ import * as salaryCalculator from './salary-calculator';
 import * as discountCalculator from './discount-calculator';
 import * as loanCalculator from './loan-calculator';
 import * as deliveryFeeCalculator from './delivery-fee-calculator';
+import * as salesTargetCalculator from './sales-target-calculator';
+import * as rentRatioCalculator from './rent-ratio-calculator';
+import * as discountPriceCalculator from './discount-price-calculator';
+import * as qrGenerator from './qr-generator';
+import * as ddayCalculator from './dday-calculator';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -26,6 +31,11 @@ const toolModules: Record<string, ToolModule> = {
   [discountCalculator.meta.slug]: discountCalculator,
   [loanCalculator.meta.slug]: loanCalculator,
   [deliveryFeeCalculator.meta.slug]: deliveryFeeCalculator,
+  [salesTargetCalculator.meta.slug]: salesTargetCalculator,
+  [rentRatioCalculator.meta.slug]: rentRatioCalculator,
+  [discountPriceCalculator.meta.slug]: discountPriceCalculator,
+  [qrGenerator.meta.slug]: qrGenerator,
+  [ddayCalculator.meta.slug]: ddayCalculator,
 };
 
 /* === 외부에서 사용하는 함수들 === */

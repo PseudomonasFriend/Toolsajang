@@ -8,6 +8,11 @@ import {
   Tag,
   Landmark,
   Bike,
+  Target,
+  Building2,
+  Percent,
+  QrCode,
+  CalendarDays,
 } from 'lucide-react';
 import type { Tool } from '@/types';
 import { cn } from '@/lib/utils';
@@ -22,6 +27,11 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Tag,
   Landmark,
   Bike,
+  Target,
+  Building2,
+  Percent,
+  QrCode,
+  CalendarDays,
 };
 
 interface ToolCardProps {

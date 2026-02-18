@@ -716,33 +716,33 @@ relatedTools: ["margin-calculator"]
 
 - **장사 팁**: 운영자가 가끔 글 올리는 게시판형 콘텐츠. AdSense 통과용 + 하단 홍보용.
 
-### Phase 1: MVP (최소 기능 제품)
-- [ ] Next.js 프로젝트 초기 세팅 (TypeScript, Tailwind, 폴더 구조)
-- [ ] 공통 레이아웃 (Header, Footer, MobileNav)
-- [ ] 공통 컴포넌트 (Button, Input, Card, AdBanner, CalculatorLayout)
-- [ ] 홈페이지
-- [ ] 마진 계산기 개발
-- [ ] 툴 목록 페이지
-- [ ] 모바일 최적화 확인
-- [ ] Vercel 배포
+### Phase 1: MVP (최소 기능 제품) ✅ 완료
+- [x] Next.js 프로젝트 초기 세팅 (TypeScript, Tailwind, 폴더 구조)
+- [x] 공통 레이아웃 (Header, Footer, MobileNav)
+- [x] 공통 컴포넌트 (AdBanner, CalculatorLayout, ToolCard)
+- [x] 홈페이지
+- [x] 마진 계산기 포함 툴 7개 개발
+- [x] 툴 목록 페이지
+- [x] 모바일 최적화 확인
+- [x] Vercel 배포 (GitHub 연동)
 
-### Phase 2: 장사 팁 + 콘텐츠 기반 구축
-- [ ] **장사 팁 섹션** 구축
-  - [ ] `/tips` 목록 페이지 (카드 리스트, 카테고리 필터)
-  - [ ] `/tips/[slug]` 상세 페이지 (MDX 렌더, 광고 슬롯, 하단 홍보 영역)
-  - [ ] MDX 파싱·메타 관리 (`src/data/tips/*.mdx`)
-  - [ ] 홈에 "장사 팁" 최신 글 미리보기 연동
-  - [ ] 네비게이션에 "장사 팁" 메뉴 반영
-- [ ] 장사 팁 콘텐츠 15개 이상 작성 (AdSense 심사용)
-- [ ] SEO 설정 (sitemap, robots.txt, JSON-LD)
-- [ ] 개인정보처리방침 / 이용약관 페이지
-- [ ] About 페이지
+### Phase 2: 장사 팁 + 콘텐츠 기반 구축 ✅ 완료
+- [x] **장사 팁 섹션** 구축
+  - [x] `/tips` 목록 페이지 (카드 리스트)
+  - [x] `/tips/[slug]` 상세 페이지 (MDX 렌더, 광고 슬롯, 하단 홍보 영역)
+  - [x] MDX 파싱·메타 관리 (`src/data/tips/*.mdx`)
+  - [x] 홈에 "장사 팁" 최신 글 미리보기 연동
+  - [x] 네비게이션에 "장사 팁" 메뉴 반영
+- [x] 장사 팁 콘텐츠 18개 작성 (가독성 스타일 적용)
+- [x] SEO 설정 (sitemap.ts, robots.ts, JSON-LD)
+- [x] 개인정보처리방침 / 이용약관 페이지
+- [x] About 페이지
 
-### Phase 3: 수익화
-- [ ] Google Analytics 4 연동
-- [ ] Google AdSense 신청 및 연동
-- [ ] 자사 배너 시스템 세팅
-- [ ] 광고 배치 최적화
+### Phase 3: 수익화 인프라 ✅ 완료
+- [x] Google Analytics 4 연동 (환경 변수 시 스크립트 주입)
+- [x] Google AdSense 스크립트 (환경 변수 시 주입)
+- [x] 자사 배너 시스템 세팅 (ads.ts)
+- [x] 광고 배치 (홈, 툴, 장사 팁, 푸터)
 
 ### Phase 4: 툴 확장
 - [ ] 부가세 계산기

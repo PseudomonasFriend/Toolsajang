@@ -1,5 +1,9 @@
 # 툴사장 — GitHub 연결 & Vercel 배포 가이드
 
+> **현재**: GitHub `PseudomonasFriend/Toolsajang` 연동 완료. `main` 푸시 시 Vercel 자동 배포.
+
+---
+
 ## 1. GitHub 저장소 만들기
 
 1. **GitHub** (https://github.com) 로그인

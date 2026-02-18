@@ -48,16 +48,25 @@ src/tools/margin-calculator/
 
 ### Key Directories
 
-- `src/tools/` — **all tool modules live here** (calculation, types, UI, README per tool)
-- `src/tools/index.ts` — central tool registry (imports from each tool folder)
-- `src/data/tools.ts` — combined tool list (implemented + upcoming) for homepage/listing
+- `src/tools/` — **all tool modules** (calculation, types, UI, README per tool)
+- `src/tools/index.ts` — central tool registry (getToolModule, getAllToolSlugs)
+- `src/data/tools.ts` — tool list for homepage/listing (from tools/index + upcoming)
 - `src/data/ads.ts` — custom banner data
-- `src/lib/format.ts` — number/currency/percent formatting
-- `src/lib/utils.ts` — cn() and shared utilities
-- `src/lib/calculations.ts` — shared calculation helpers only (tool-specific logic is in each tool folder)
-- `src/components/common/CalculatorLayout.tsx` — shared wrapper for all tool pages
-- `src/components/common/AdBanner.tsx` — unified ad component (AdSense + custom)
-- `src/types/index.ts` — common types only (Tool, AdSlot, BlogPost)
+- `src/data/tips/` — **장사 팁 MDX files** (*.mdx), 18 articles
+- `src/lib/tips.ts` — getTipsList, getTipBySlug, getLatestTips, getAllTipSlugs
+- `src/lib/format.ts`, `src/lib/utils.ts`, `src/lib/calculations.ts`
+- `src/components/common/CalculatorLayout.tsx`, `AdBanner.tsx`, `JsonLd.tsx`
+- `src/components/tips/TipCard.tsx` — tip list card
+- `src/app/tips/page.tsx` — tip list; `app/tips/[slug]/page.tsx` — tip detail (MDX)
+- `src/app/sitemap.ts`, `src/app/robots.ts` — SEO
+- `src/types/index.ts` — Tool, BlogPost/TipPost, CustomAd
+
+### 장사 팁 (Tips)
+
+- **URL**: `/tips` (list), `/tips/[slug]` (detail). Content in `src/data/tips/*.mdx`.
+- **List**: `getTipsList()` from `src/lib/tips.ts`. TipCard, ad slots every 3 items.
+- **Detail**: `getTipBySlug(slug)`, MDX via `next-mdx-remote/rsc`, `.tip-content` styling in `globals.css`.
+- **Home**: `getLatestTips(3)` for preview. Nav: "장사 팁" → `/tips`.
 
 ### Ad Slot System
 
@@ -67,7 +76,7 @@ Two ad types (`adsense` | `custom`) managed through `AdBanner.tsx`. Slot positio
 
 1. **All UI text and code comments in Korean**
 2. **Function components + React Hooks only**
-3. **Mobile-first design** — desktop is just mobile layout with `max-width` centering (480px for tools, 720px for blog)
+3. **Mobile-first design** — desktop is just mobile layout with `max-width` centering (480px for tools, 720px for tips)
 4. **Minimum touch target**: 44x44px. Body text >= 16px, input text >= 18px, result numbers >= 24px bold
 5. **Server Components by default** — minimize Client Components
 6. **SEO metadata on every page** using Next.js Metadata API (`generateMetadata` or `metadata` export)
