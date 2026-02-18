@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTipBySlug, getTipsList, getAllTipSlugs } from '@/lib/tips';
 import AdBanner from '@/components/common/AdBanner';
 import JsonLd from '@/components/common/JsonLd';
+import RecommendedToolsBanner from '@/components/tips/RecommendedToolsBanner';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
 
@@ -66,6 +67,11 @@ export default async function TipDetailPage({ params }: Props) {
         <div className="tip-content">
           <MDXRemote source={tip.content} />
         </div>
+
+        {/* 추천 툴 배너 */}
+        {tip.meta.relatedTools && tip.meta.relatedTools.length > 0 && (
+          <RecommendedToolsBanner toolSlugs={tip.meta.relatedTools} />
+        )}
 
         {/* 본문 하단 광고 */}
         <AdBanner
