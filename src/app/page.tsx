@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* 인기 툴 그리드 */}
       <section className="mb-6" aria-label="인기 툴 목록">
         <h2 className="mb-4 text-lg font-bold text-gray-900">인기 툴</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3">
           {tools.map((tool) => (
             <ToolCard key={tool.slug} tool={tool} />
           ))}
