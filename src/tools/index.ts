@@ -15,6 +15,11 @@ import * as discountPriceCalculator from './discount-price-calculator';
 import * as qrGenerator from './qr-generator';
 import * as ddayCalculator from './dday-calculator';
 import * as menuNameIdeas from './menu-name-ideas';
+import * as characterCounter from './character-counter';
+import * as inventoryTurnover from './inventory-turnover';
+import * as unitPriceCalculator from './unit-price-calculator';
+import * as rentPerPyeong from './rent-per-pyeong';
+import * as foodCostCalculator from './food-cost-calculator';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -38,6 +43,11 @@ const toolModules: Record<string, ToolModule> = {
   [qrGenerator.meta.slug]: qrGenerator,
   [ddayCalculator.meta.slug]: ddayCalculator,
   [menuNameIdeas.meta.slug]: menuNameIdeas,
+  [characterCounter.meta.slug]: characterCounter,
+  [inventoryTurnover.meta.slug]: inventoryTurnover,
+  [unitPriceCalculator.meta.slug]: unitPriceCalculator,
+  [rentPerPyeong.meta.slug]: rentPerPyeong,
+  [foodCostCalculator.meta.slug]: foodCostCalculator,
 };
 
 /* === 외부에서 사용하는 함수들 === */
