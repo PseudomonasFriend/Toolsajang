@@ -803,11 +803,16 @@ relatedTools: ["margin-calculator"]
 ## 19. 환경 변수
 
 ```env
-# .env.local
+# .env.local (공개용 — 클라이언트 노출 가능)
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX          # Google Analytics 4
 NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXX   # Google AdSense Publisher ID
 NEXT_PUBLIC_SITE_URL=https://toolsajang.com
 NEXT_PUBLIC_SITE_NAME=툴사장
+
+# 서버 전용 (API 키 — 절대 NEXT_PUBLIC_ 붙이지 않음)
+GEMINI_API_KEY=...          # Google AI Studio 발급 — 메뉴명 아이디어 툴
+GROQ_API_KEY=...            # Groq 콘솔 발급 — 메뉴명 아이디어 툴 폴백
+OPENROUTER_API_KEY=...      # (선택) OpenRouter — 메뉴명 아이디어 툴 폴백
 ```
 
 ---

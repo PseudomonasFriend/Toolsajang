@@ -20,13 +20,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const tip = getTipBySlug(slug);
   if (!tip) return { title: '장사 팁 | 툴사장' };
+  const url = `${BASE}/tips/${slug}`;
   return {
     title: tip.meta.title,
     description: tip.meta.description,
     openGraph: {
-      title: `${tip.meta.title} | 툴사장`,
+      title: tip.meta.title,
       description: tip.meta.description,
+      url,
+      type: 'article',
+      publishedTime: tip.meta.date,
     },
+    alternates: { canonical: url },
   };
 }
 

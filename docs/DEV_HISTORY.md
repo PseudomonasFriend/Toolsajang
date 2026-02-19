@@ -27,6 +27,41 @@
 
 ---
 
+## 2026-02-20
+
+### 신규 툴 5종 추가
+- **매출 목표 계산기** (slug: `sales-target-calculator`): 고정비·목표 순이익·마진율 → 필요 매출 역산. 카테고리: 재무/회계, 아이콘: Target.
+- **임대료 비율 계산기** (slug: `rent-ratio-calculator`): 월 매출·월 임대료 → 임대료 비율(%) 및 10~20% 적정/높음 안내. 카테고리: 매장운영, 아이콘: Building2.
+- **할인가 역산 계산기** (slug: `discount-price-calculator`): 정가·할인율(%) → 할인 금액·할인가. 카테고리: 재무/회계, 아이콘: Percent.
+- **QR코드 생성기** (slug: `qr-generator`): URL/텍스트 입력 → QR 이미지 표시 + PNG 다운로드. `qrcode.react` 사용. 카테고리: 유틸리티, 아이콘: QrCode.
+- **D-day / 기간 계산기** (slug: `dday-calculator`): 목표일 선택 → D-day, 요일, "D-n (n일 남음)" 등 표시. 카테고리: 유틸리티, 아이콘: CalendarDays.
+- **등록**: `src/tools/index.ts`에 5개 모듈 추가, `ToolCard.tsx`에 Target·Building2·Percent·QrCode·CalendarDays 아이콘 매핑. (commit: fe094cc)
+
+### UI·표시
+- **NEW 뱃지**: 신규 툴 5종 메타에 `isNew: true` 추가. (commit: 3c2bcdd)
+- **툴 그리드**: 홈·전체 툴 페이지 그리드를 항상 2열로 고정(sm 3열 제거). (commit: 0453189)
+
+### 문서 보정 및 카테고리 필터
+- **WORK_STATUS.md**: 툴 7개→12개, Phase 4 카테고리 필터·신규 5툴 완료 반영, 현재 상태 요약 갱신.
+- **PROJECT_OVERVIEW.md**: 사이트 구조·폴더 구조에 신규 툴 5종 반영, 구현된 툴 테이블 12개로 확장.
+- **툴 목록 카테고리 필터**: `ToolsListWithFilter.tsx` 추가. 전체·재무/회계·매장운영·마케팅·유틸리티 탭으로 필터, `/tools` 페이지에 적용.
+
+### SEO 강화 및 검색 등록 준비
+- **루트 레이아웃**: keywords, openGraph(title/description/url/images), twitter card, robots.googleBot, alternates.canonical, Google/Naver 사이트 검증 메타 태그(환경 변수 주입).
+- **툴·팁 상세**: generateMetadata에서 openGraph.url, alternates.canonical, 팁은 openGraph.type article·publishedTime 반영.
+- **docs/SEO_SUBMIT.md**: 신규 작성. Google Search Console·네이버 서치어드바이저 사이트 등록, 소유 확인(HTML/메타 태그), sitemap 제출, OG 이미지 설정, 점검 체크리스트.
+- **docs/DEPLOY.md**: 환경 변수 예시에 검색엔진 검증·OG 이미지·메뉴명 아이디어 툴용 서버 전용 변수 추가, SEO_SUBMIT 링크.
+
+### 메뉴명 아이디어 AI 툴
+- **lib/llm**: `src/lib/llm/types.ts`, `providers/gemini.ts`(Gemini REST), `providers/groq.ts`, `providers/openrouter.ts`, `index.ts`의 `suggestMenuNames()` — Gemini → Groq → OpenRouter 순차 폴백.
+- **API**: `POST /api/tools/menu-ideas` — body 검증(category, menuType, keywords, tone, count), 400/503 처리.
+- **툴 모듈**: `src/tools/menu-name-ideas/` (types, README, MenuNameIdeas.tsx, index.ts). 업종·메뉴 종류·키워드·톤·개수 입력, 추천 리스트·복사·사용 프로바이더 표시. slug: `menu-name-ideas`, 카테고리: 마케팅, 아이콘: Lightbulb.
+- **등록**: `tools/index.ts`, ToolCard에 Lightbulb 아이콘 추가.
+- **개인정보처리방침**: "3. AI 툴 이용 시 제3자 전송" — 메뉴명 아이디어 등 AI 툴 사용 시 입력이 Google/Groq/OpenRouter로 전송·미보관 안내. 섹션 번호 4~6으로 밀어서 정리.
+- **환경 변수 문서**: TOOLSAJANG_SPEC.md 19장, docs/DEPLOY.md에 서버 전용 `GEMINI_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` 설명 추가.
+
+---
+
 ## 2026-02-19
 
 ### 배포·저장소
@@ -73,6 +108,15 @@
 - **명세**: TOOLSAJANG_SPEC.md에 "장사 팁" 섹션 추가. 사이트맵·네비를 "콘텐츠" → "장사 팁"(/tips)으로 변경. Phase 2 로드맵에 장사 팁 구축·콘텐츠 15개 이상·SEO 등 반영. 향후 툴에 "가게명 아이디어", "메뉴명 아이디어"(AI 툴) 추가.
 - **Git**: .gitignore 추가(Next.js·IDE). 저장소 초기화, 첫 커밋. GitHub 원격 연결(HTTPS). 푸시 시 비공개 이메일 거절 → no-reply 이메일로 커밋 재작성 후 푸시 성공.
 - **배포 가이드**: docs/DEPLOY.md 작성(GitHub 저장소 생성·푸시, Vercel 연동·배포 절차).
+
+---
+
+## 추가로 할 일 (다음 세션 참고)
+
+- **메뉴명 아이디어 툴**: 배포 환경에 `GEMINI_API_KEY`(필수), `GROQ_API_KEY`·`OPENROUTER_API_KEY`(선택) 설정 후 동작 확인. 미설정 시 "설정된 AI API가 없습니다" 메시지 노출.
+- **검색 등록**: Google Search Console·네이버 서치어드바이저에 사이트 등록, 소유 확인 메타 태그(`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_NAVER_SITE_VERIFICATION`) 설정 후 sitemap 제출. 절차는 `docs/SEO_SUBMIT.md` 참고.
+- **속도 제한**: 메뉴명 API 남용 시 Upstash 등으로 IP당 N회/분 제한 검토.
+- **WORK_STATUS.md** "미완성/추후 진행" 항목: 글자수 카운터·가게명 AI, AdSense 승인·자사 배너, 테스트·og:image 등.
 
 ---
 

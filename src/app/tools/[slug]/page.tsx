@@ -12,6 +12,8 @@ export async function generateStaticParams() {
   return getAllToolSlugs().map((slug) => ({ slug }));
 }
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
 /** 동적 SEO 메타데이터 */
 export async function generateMetadata({
   params,
@@ -20,13 +22,17 @@ export async function generateMetadata({
   const mod = getToolModule(slug);
   if (!mod) return {};
 
+  const url = `${BASE}/tools/${slug}`;
   return {
     title: mod.seo.title,
     description: mod.seo.description,
     openGraph: {
-      title: `${mod.seo.title} | 툴사장`,
+      title: mod.seo.title,
       description: mod.seo.description,
+      url,
+      type: 'website',
     },
+    alternates: { canonical: url },
   };
 }
 

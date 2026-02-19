@@ -95,15 +95,22 @@ git push -u origin main
 
 ## 5. (선택) 환경 변수
 
-GA, AdSense 등을 쓰려면:
+GA, AdSense, 검색엔진 등록 등을 쓰려면:
 
 1. Vercel 프로젝트 → **Settings** → **Environment Variables**
 2. 예시:
+   - `NEXT_PUBLIC_SITE_URL` = `https://본인도메인.vercel.app` (또는 커스텀 도메인) — **권장**
    - `NEXT_PUBLIC_GA_ID` = `G-XXXXXXXXXX`
    - `NEXT_PUBLIC_ADSENSE_ID` = `ca-pub-XXXXXXX`
-   - `NEXT_PUBLIC_SITE_URL` = `https://본인도메인.vercel.app`
+   - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` = Google Search Console 소유 확인용 content 값
+   - `NEXT_PUBLIC_NAVER_SITE_VERIFICATION` = 네이버 서치어드바이저 소유 확인용 content 값
+   - `NEXT_PUBLIC_OG_IMAGE_URL` = 공유 미리보기 이미지 전체 URL (예: `https://도메인/og.png`)
+   - **메뉴명 아이디어 툴 (서버 전용)**  
+     `GEMINI_API_KEY`, `GROQ_API_KEY` (선택: `OPENROUTER_API_KEY`) — Vercel에 등록 시 클라이언트에 노출되지 않음
+   - **네이버 로그인 (추후 구현 예정)**  
+     구현 시 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` 사용. [docs/NAVER_LOGIN.md](./NAVER_LOGIN.md) 참고.
 
-저장 후 **Redeploy** 하면 반영됩니다.
+저장 후 **Redeploy** 하면 반영됩니다. **구글·네이버 검색 등록 절차**는 [docs/SEO_SUBMIT.md](./SEO_SUBMIT.md) 참고.
 
 ---
 

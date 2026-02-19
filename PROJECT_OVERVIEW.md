@@ -34,7 +34,7 @@
 |------|------|
 | `/` | 홈 (툴 카드 + 장사 팁 최신 3개 + 광고 슬롯) |
 | `/tools` | 툴 전체 목록 |
-| `/tools/[slug]` | 개별 툴 (마진, 부가세, 손익분기, 급여, 할인, 대출, 배달 수수료) |
+| `/tools/[slug]` | 개별 툴 13종 (마진, 부가세, 손익분기, 급여, 할인, 대출, 배달 수수료, 매출 목표, 임대료 비율, 할인가 역산, QR코드, D-day, 메뉴명 아이디어 등) |
 | `/tips` | 장사 팁 목록 |
 | `/tips/[slug]` | 장사 팁 상세 (MDX, 18개 글) |
 | `/about` | 서비스 소개 |
@@ -71,7 +71,13 @@ src/
 │   ├── salary-calculator/
 │   ├── discount-calculator/
 │   ├── loan-calculator/
-│   └── delivery-fee-calculator/
+│   ├── delivery-fee-calculator/
+│   ├── sales-target-calculator/
+│   ├── rent-ratio-calculator/
+│   ├── discount-price-calculator/
+│   ├── qr-generator/
+│   ├── dday-calculator/
+│   └── menu-name-ideas/
 │
 ├── components/
 │   ├── layout/              Header, Footer, MobileNav
@@ -93,7 +99,7 @@ src/
 
 ---
 
-## 구현된 툴 (7개)
+## 구현된 툴 (13개)
 
 | 계산기 | slug | 비고 |
 |--------|------|------|
@@ -104,6 +110,12 @@ src/
 | 할인 계산기 | `discount-calculator` | 할인 전후 비교 |
 | 대출 계산기 | `loan-calculator` | 원금균등/원리금균등 + 월별 스케줄 |
 | 배달 수수료 계산기 | `delivery-fee-calculator` | 배민/쿠팡이츠/요기요 등 수익 비교 |
+| 매출 목표 계산기 | `sales-target-calculator` | 고정비·목표 순이익·마진율 → 필요 매출 역산 |
+| 임대료 비율 계산기 | `rent-ratio-calculator` | 매출 대비 임대료 % |
+| 할인가 역산 계산기 | `discount-price-calculator` | 정가·할인율 → 할인가 |
+| QR코드 생성기 | `qr-generator` | URL/텍스트 → QR 이미지·다운로드 |
+| D-day 계산기 | `dday-calculator` | 목표일 D-day·요일 표시 |
+| 메뉴명 아이디어 | `menu-name-ideas` | AI 메뉴명 추천 (Gemini/Groq/OpenRouter) |
 
 ---
 

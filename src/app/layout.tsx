@@ -23,13 +23,24 @@ const organizationJsonLd = {
   url: SITE_URL,
 };
 
+const SITE_DESC =
+  '마진 계산기, 부가세 계산기 등 소상공인에게 필요한 무료 비즈니스 도구를 제공합니다. 로그인 없이 바로 사용하세요.';
+
 export const metadata: Metadata = {
   title: {
     default: '툴사장 - 사장님을 위한 무료 비즈니스 툴',
     template: '%s | 툴사장',
   },
-  description:
-    '마진 계산기, 부가세 계산기 등 소상공인에게 필요한 무료 비즈니스 도구를 제공합니다. 로그인 없이 바로 사용하세요.',
+  description: SITE_DESC,
+  keywords: [
+    '마진 계산기',
+    '부가세 계산기',
+    '손익분기점',
+    '소상공인 계산기',
+    '자영업자 도구',
+    '무료 비즈니스 툴',
+    '툴사장',
+  ],
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com'
   ),
@@ -37,11 +48,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ko_KR',
     siteName: '툴사장',
+    title: '툴사장 - 사장님을 위한 무료 비즈니스 툴',
+    description: SITE_DESC,
+    url: SITE_URL,
+    images: process.env.NEXT_PUBLIC_OG_IMAGE_URL
+      ? [{ url: process.env.NEXT_PUBLIC_OG_IMAGE_URL, width: 1200, height: 630, alt: '툴사장' }]
+      : [],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '툴사장 - 사장님을 위한 무료 비즈니스 툴',
+    description: SITE_DESC,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true },
   },
+  alternates: { canonical: SITE_URL },
 };
 
 export default function RootLayout({
@@ -52,6 +76,19 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* 검색엔진 사이트 소유 확인 — 등록 시 발급값을 환경 변수로 설정 */}
+        {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
+          <meta
+            name="google-site-verification"
+            content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+          />
+        )}
+        {process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION && (
+          <meta
+            name="naver-site-verification"
+            content={process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION}
+          />
+        )}
         <JsonLd data={webSiteJsonLd} />
         <JsonLd data={organizationJsonLd} />
         {/* Google Analytics 4 */}

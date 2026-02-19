@@ -13,6 +13,7 @@ import {
   Percent,
   QrCode,
   CalendarDays,
+  Lightbulb,
 } from 'lucide-react';
 import type { Tool } from '@/types';
 import { cn } from '@/lib/utils';
@@ -32,6 +33,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Percent,
   QrCode,
   CalendarDays,
+  Lightbulb,
 };
 
 interface ToolCardProps {

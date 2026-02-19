@@ -41,7 +41,22 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="mb-2 text-base font-bold text-gray-900">
-            3. 광고 관련
+            3. AI 툴 이용 시 제3자 전송
+          </h2>
+          <p>
+            &ldquo;메뉴명 아이디어&rdquo; 등 AI 기반 툴을 사용할 경우, 입력하신 내용(업종, 메뉴 종류, 키워드 등)이
+            추천 결과 생성 목적으로 <strong>제3자 AI 서비스(Google AI, Groq, OpenRouter 등)</strong>로
+            전송될 수 있습니다. 해당 서비스의 개인정보 처리 방침이 적용될 수 있으니, 각 사업자 정책을
+            참고해 주시기 바랍니다.
+          </p>
+          <p className="mt-2">
+            서비스는 위 입력 내용을 저장하지 않으며, 요청 처리 후 보관하지 않습니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            4. 광고 관련
           </h2>
           <p>
             본 서비스는 Google AdSense를 통한 광고를 게재할 수 있으며, 이 과정에서
@@ -60,7 +75,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="mb-2 text-base font-bold text-gray-900">
-            4. 개인정보의 보관 및 파기
+            5. 개인정보의 보관 및 파기
           </h2>
           <p>
             서비스는 이용자의 개인정보를 별도로 보관하지 않으며, 자동 수집된
@@ -70,7 +85,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="mb-2 text-base font-bold text-gray-900">
-            5. 문의
+            6. 문의
           </h2>
           <p>
             개인정보 관련 문의사항은 아래 이메일로 연락해 주세요.

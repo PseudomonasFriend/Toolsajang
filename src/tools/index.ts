@@ -14,6 +14,7 @@ import * as rentRatioCalculator from './rent-ratio-calculator';
 import * as discountPriceCalculator from './discount-price-calculator';
 import * as qrGenerator from './qr-generator';
 import * as ddayCalculator from './dday-calculator';
+import * as menuNameIdeas from './menu-name-ideas';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -36,6 +37,7 @@ const toolModules: Record<string, ToolModule> = {
   [discountPriceCalculator.meta.slug]: discountPriceCalculator,
   [qrGenerator.meta.slug]: qrGenerator,
   [ddayCalculator.meta.slug]: ddayCalculator,
+  [menuNameIdeas.meta.slug]: menuNameIdeas,
 };
 
 /* === 외부에서 사용하는 함수들 === */
