@@ -110,14 +110,12 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* AdSense 스크립트 — 승인 후 NEXT_PUBLIC_ADSENSE_ID 설정 */}
-        {process.env.NEXT_PUBLIC_ADSENSE_ID && (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-            crossOrigin="anonymous"
-          />
-        )}
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6162400610480124"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="flex min-h-screen flex-col">
         <Header />
