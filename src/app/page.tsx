@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { tools } from '@/data/tools';
+import { getActiveTools } from '@/data/tools';
 import ToolCard from '@/components/tools/ToolCard';
 import TipCard from '@/components/tips/TipCard';
 import AdBanner from '@/components/common/AdBanner';
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const latestTips = getLatestTips(3);
+  const activeTools = getActiveTools();
 
   return (
     <div className="mx-auto max-w-[480px] px-4 py-8">
@@ -33,7 +34,7 @@ export default function HomePage() {
       <section className="mb-6" aria-label="인기 툴 목록">
         <h2 className="mb-4 text-lg font-bold text-gray-900">인기 툴</h2>
         <div className="grid grid-cols-2 gap-3">
-          {tools.map((tool) => (
+          {activeTools.map((tool) => (
             <ToolCard key={tool.slug} tool={tool} />
           ))}
         </div>

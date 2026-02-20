@@ -52,7 +52,7 @@ export default function AboutPage() {
           <h2 className="mb-2 text-lg font-bold text-gray-900">제공 도구</h2>
           <p>
             마진, 부가세, 손익분기점, 급여, 할인율, 대출 이자, 배달수수료 등
-            19종의 비즈니스 도구를 무료로 제공합니다.
+            17종의 비즈니스 도구를 무료로 제공합니다.
           </p>
         </section>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { tools } from '@/data/tools';
+import { getActiveTools } from '@/data/tools';
 import ToolsListWithFilter from '@/components/tools/ToolsListWithFilter';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
@@ -21,7 +21,7 @@ export default function ToolsPage() {
   return (
     <div className="mx-auto max-w-[480px] px-4 py-6">
       <h1 className="mb-6 text-2xl font-bold text-gray-900">전체 툴</h1>
-      <ToolsListWithFilter tools={tools} />
+      <ToolsListWithFilter tools={getActiveTools()} />
     </div>
   );
 }
