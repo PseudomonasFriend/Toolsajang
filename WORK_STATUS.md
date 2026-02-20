@@ -1,6 +1,6 @@
 # 툴사장 — 작업 현황 (WORK STATUS)
 
-> 최종 업데이트: 2026-02-20 (SEO 제출 준비 완료)
+> 최종 업데이트: 2026-02-20 (단위 테스트 210개 완료)
 
 ---
 
@@ -48,6 +48,21 @@
 - [x] 마진 계산기 단위 테스트 (`src/tools/margin-calculator/calculation.test.ts`) — 11개 테스트
 - [x] 부가세 계산기 단위 테스트 (`src/tools/vat-calculator/calculation.test.ts`) — 14개 테스트
 - [x] 손익분기점 계산기 단위 테스트 (`src/tools/break-even-calculator/calculation.test.ts`) — 12개 테스트
+- [x] 급여 계산기 단위 테스트 (`src/tools/salary-calculator/calculation.test.ts`) — 12개 테스트
+- [x] 할인율 계산기 단위 테스트 (`src/tools/discount-calculator/calculation.test.ts`) — 14개 테스트
+- [x] 대출 이자 계산기 단위 테스트 (`src/tools/loan-calculator/calculation.test.ts`) — 12개 테스트
+- [x] 배달앱 수수료 계산기 단위 테스트 (`src/tools/delivery-fee-calculator/calculation.test.ts`) — 14개 테스트
+- [x] 매출 목표 계산기 단위 테스트 (`src/tools/sales-target-calculator/calculation.test.ts`) — 10개 테스트
+- [x] 임대료 비율 계산기 단위 테스트 (`src/tools/rent-ratio-calculator/calculation.test.ts`) — 13개 테스트
+- [x] 할인가 역산 계산기 단위 테스트 (`src/tools/discount-price-calculator/calculation.test.ts`) — 10개 테스트
+- [x] D-day 계산기 단위 테스트 (`src/tools/dday-calculator/calculation.test.ts`) — 15개 테스트
+- [x] 원가율 계산기 단위 테스트 (`src/tools/food-cost-calculator/calculation.test.ts`) — 14개 테스트
+- [x] 글자수 카운터 단위 테스트 (`src/tools/character-counter/calculation.test.ts`) — 21개 테스트
+- [x] 재고 회전율 계산기 단위 테스트 (`src/tools/inventory-turnover/calculation.test.ts`) — 12개 테스트
+- [x] 평당 임대료 계산기 단위 테스트 (`src/tools/rent-per-pyeong/calculation.test.ts`) — 12개 테스트
+- [x] 단가 비교 계산기 단위 테스트 (`src/tools/unit-price-calculator/calculation.test.ts`) — 14개 테스트
+- **전체 테스트: 210개 통과 (16개 파일), `pnpm test` 전부 통과 확인**
+- 스킵: QR코드 생성기(calculation.ts 없음, UI 전용), 메뉴명 아이디어·가게명 AI (API 의존)
 
 ---
 
@@ -70,7 +85,7 @@
 ### 기타
 - [ ] AdSense 승인 후 슬롯 ID·환경 변수 설정
 - [ ] 자사 배너 이미지·링크 실제 등록 (ads.ts)
-- [ ] 테스트 코드 (선택)
+- [x] 테스트 코드 — 계산 가능한 툴 16종 단위 테스트 210개 완료 (2026-02-20)
 - [x] og:image per page — 홈/툴/팁 동적 OG 이미지 (next/og ImageResponse, 2026-02-19)
 - [x] 메뉴명·가게명 API 속도 제한 (IP당 분당 5회, in-memory — 추후 Upstash 전환 가능)
 - [ ] Google Search Console·네이버 서치어드바이저 사이트 등록 및 sitemap 제출 (docs/SEO_SUBMIT.md 참고, 코드 측 준비 완료 — 수동 작업 필요)
@@ -87,4 +102,4 @@
 | **OG 이미지** | 홈/툴(19개)/팁(28개) 동적 OG 이미지 자동 생성 (next/og) |
 | **SEO** | sitemap.xml, robots.txt, JSON-LD, 동적 OG 이미지, verification meta 슬롯, 전 페이지 OG·canonical 완비 — Search Console/서치어드바이저 등록만 남음 |
 | **광고/분석** | GA4·AdSense 스크립트 준비됨 (환경 변수 설정 시 동작) |
-| **테스트** | Vitest 설치, 계산기 3종 단위 테스트 37개 (마진·부가세·손익분기점) |
+| **테스트** | Vitest 설치, 계산기 16종 단위 테스트 210개 전부 통과 (마진·부가세·손익분기점·급여·할인율·대출·배달수수료·매출목표·임대료비율·할인가역산·D-day·원가율·글자수·재고회전율·평당임대료·단가비교) |

@@ -46,6 +46,50 @@
 
 ---
 
+## 2026-02-20: 단위 테스트 확장 — 계산기 16종 210개 테스트 완성
+
+### 무엇을 했는가 (What)
+
+- 기존 3종(마진·부가세·손익분기점) 37개 테스트에서 13종 추가, 총 16종 210개로 확장
+- 신규 테스트 파일 13개 생성:
+  - `src/tools/salary-calculator/calculation.test.ts` — 12개 (급여·4대보험·실수령액)
+  - `src/tools/discount-calculator/calculation.test.ts` — 14개 (할인율·마진변화·필요판매량)
+  - `src/tools/loan-calculator/calculation.test.ts` — 12개 (원리금균등·원금균등·스케줄)
+  - `src/tools/delivery-fee-calculator/calculation.test.ts` — 14개 (플랫폼별 수수료·findBestPlatformIndex)
+  - `src/tools/sales-target-calculator/calculation.test.ts` — 10개 (필요매출 역산·엣지케이스)
+  - `src/tools/rent-ratio-calculator/calculation.test.ts` — 13개 (비율·low/normal/high 판정)
+  - `src/tools/discount-price-calculator/calculation.test.ts` — 10개 (할인가·소수점 반올림)
+  - `src/tools/dday-calculator/calculation.test.ts` — 15개 (미래/과거/오늘·요일·잘못된 날짜)
+  - `src/tools/food-cost-calculator/calculation.test.ts` — 14개 (원가율·권장가·diagnosisLevel)
+  - `src/tools/character-counter/calculation.test.ts` — 21개 (한글바이트·줄수·단어수)
+  - `src/tools/inventory-turnover/calculation.test.ts` — 12개 (회전율·보유일수·진단등급)
+  - `src/tools/rent-per-pyeong/calculation.test.ts` — 12개 (평↔m² 환산·평당임대료·비율)
+  - `src/tools/unit-price-calculator/calculation.test.ts` — 14개 (단가·최저가·차이율)
+- `WORK_STATUS.md` 테스트 현황 업데이트
+
+### 왜 이렇게 했는가 (Why)
+
+- 19개 툴 중 계산 로직이 있는 16종에 대해 회귀 테스트 커버리지 확보
+- 향후 요율 변경(급여), 수수료 변경(배달앱), 공식 수정 시 빠른 검증이 가능하도록
+- QR코드 생성기(UI 전용, calculation.ts 없음)와 AI 툴 2종(API 의존)은 스킵
+
+### 의사결정 & 논리 (Decision)
+
+- 기존 3개 테스트 파일의 패턴을 완전히 동일하게 따름: `describe` 중첩 + 한국어 설명 + 엣지케이스
+- 각 테스트에 실제 소상공인 시나리오 1~2개 포함하여 현실성 확보
+- 반올림 오차가 있는 케이스는 `toBeCloseTo` 대신 구체적 계산값을 직접 검증
+
+### 시도했지만 폐기한 것 (Rejected Alternatives)
+
+- `rent-per-pyeong` 테스트에서 `sqm` 입력값을 그대로 expect했으나, 계산 함수가 소수점 1자리로 반올림하여 33.06 → 33.1이 됨. 실제 함수 동작에 맞게 수정.
+
+### 결과 & 배운 점 (Outcome)
+
+- `pnpm test` 실행 결과: 16개 파일, 210개 테스트 전체 통과
+- 계산 함수 내부에서 `Math.round(x * 10) / 10` 패턴(소수점 1자리)이 일관되게 사용되므로, 테스트 작성 시 반올림 결과를 미리 수동 계산하여 검증해야 함
+
+---
+
 ## 2026-02-20: SEO 제출 준비 — 페이지별 OG 태그, canonical, sitemap 개선
 
 ### 무엇을 했는가 (What)
