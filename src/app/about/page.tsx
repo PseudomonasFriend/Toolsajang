@@ -49,6 +49,22 @@ export default function AboutPage() {
         </section>
 
         <section>
+          <h2 className="mb-2 text-lg font-bold text-gray-900">제공 도구</h2>
+          <p>
+            마진, 부가세, 손익분기점, 급여, 할인율, 대출 이자, 배달수수료 등
+            19종의 비즈니스 도구를 무료로 제공합니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-lg font-bold text-gray-900">장사 팁</h2>
+          <p>
+            경영, 세금, 마케팅 등 소상공인 실무 노하우를
+            28편의 장사 팁 콘텐츠로 제공합니다.
+          </p>
+        </section>
+
+        <section>
           <h2 className="mb-2 text-lg font-bold text-gray-900">문의</h2>
           <p>
             서비스 관련 문의는 아래 이메일로 연락해 주세요.

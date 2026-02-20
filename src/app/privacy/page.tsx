@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
 export const metadata: Metadata = {
   title: '개인정보처리방침',
   description: '툴사장 개인정보처리방침 안내 페이지입니다.',
-  robots: { index: false, follow: false },
+  openGraph: {
+    title: '개인정보처리방침 | 툴사장',
+    description: '툴사장 개인정보처리방침 안내 페이지입니다.',
+    url: `${BASE}/privacy`,
+    type: "website",
+  },
+  alternates: { canonical: `${BASE}/privacy` },
 };
 
 export default function PrivacyPage() {
@@ -86,7 +94,43 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="mb-2 text-base font-bold text-gray-900">
-            6. 문의
+            6. 쿠키(Cookie) 사용
+          </h2>
+          <p>
+            서비스는 이용자의 편의 향상을 위해 쿠키를 사용합니다.
+          </p>
+          <ul className="mt-2 list-inside list-disc space-y-1">
+            <li>서비스 이용 패턴 분석 (Google Analytics)</li>
+            <li>맞춤형 광고 제공 (Google AdSense)</li>
+          </ul>
+          <p className="mt-2">
+            브라우저 설정에서 쿠키 수집을 거부할 수 있습니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            7. 이용자의 권리
+          </h2>
+          <p>
+            이용자는 쿠키 수집에 대한 동의를 철회할 수 있습니다.
+            본 서비스는 회원가입 없이 운영되어 별도 보관 개인정보가 없습니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            8. 개인정보처리방침의 변경
+          </h2>
+          <p>
+            본 방침은 법령 변경이나 서비스 정책 변경에 따라 수정될 수 있으며,
+            변경 시 서비스 내 공지를 통해 안내합니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            9. 문의
           </h2>
           <p>
             개인정보 관련 문의사항은 아래 이메일로 연락해 주세요.

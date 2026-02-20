@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
 export const metadata: Metadata = {
   title: '이용약관',
   description: '툴사장 서비스 이용약관 안내 페이지입니다.',
-  robots: { index: false, follow: false },
+  openGraph: {
+    title: '이용약관 | 툴사장',
+    description: '툴사장 서비스 이용약관 안내 페이지입니다.',
+    url: `${BASE}/terms`,
+    type: "website",
+  },
+  alternates: { canonical: `${BASE}/terms` },
 };
 
 export default function TermsPage() {
@@ -66,7 +74,27 @@ export default function TermsPage() {
 
         <section>
           <h2 className="mb-2 text-base font-bold text-gray-900">
-            제6조 (문의)
+            제6조 (저작권)
+          </h2>
+          <p>
+            서비스에 포함된 콘텐츠(텍스트, 이미지, 코드 등)의 저작권은
+            서비스 제공자에게 있습니다. 무단 복제 및 배포를 금지합니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            제7조 (약관의 변경)
+          </h2>
+          <p>
+            본 약관은 필요 시 변경될 수 있으며, 변경된 약관은
+            서비스 내 공지를 통해 효력이 발생합니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-2 text-base font-bold text-gray-900">
+            제8조 (문의)
           </h2>
           <p>
             이용약관 관련 문의사항은 아래 이메일로 연락해 주세요.
