@@ -8,7 +8,7 @@ export const meta: Tool = {
   icon: 'Lightbulb',
   category: '마케팅',
   isNew: true,
-  isActive: true,
+  isActive: false,
 };
 
 export const seo = {

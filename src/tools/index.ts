@@ -20,6 +20,7 @@ import * as inventoryTurnover from './inventory-turnover';
 import * as unitPriceCalculator from './unit-price-calculator';
 import * as rentPerPyeong from './rent-per-pyeong';
 import * as foodCostCalculator from './food-cost-calculator';
+import * as shopNameIdeas from './shop-name-ideas';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -48,6 +49,7 @@ const toolModules: Record<string, ToolModule> = {
   [unitPriceCalculator.meta.slug]: unitPriceCalculator,
   [rentPerPyeong.meta.slug]: rentPerPyeong,
   [foodCostCalculator.meta.slug]: foodCostCalculator,
+  [shopNameIdeas.meta.slug]: shopNameIdeas,
 };
 
 /* === 외부에서 사용하는 함수들 === */
@@ -60,17 +62,21 @@ export function getActiveTools(): Tool[] {
   return tools.filter((t) => t.isActive);
 }
 
-/** slug로 툴 모듈 조회 */
+/** slug로 툴 모듈 조회 (비활성 툴은 제외) */
 export function getToolModule(slug: string): ToolModule | undefined {
-  return toolModules[slug];
+  const mod = toolModules[slug];
+  if (!mod || !mod.meta.isActive) return undefined;
+  return mod;
 }
 
-/** slug로 툴 메타만 조회 */
+/** slug로 툴 메타만 조회 (비활성 툴은 제외) */
 export function getToolBySlug(slug: string): Tool | undefined {
-  return toolModules[slug]?.meta;
+  const mod = toolModules[slug];
+  if (!mod || !mod.meta.isActive) return undefined;
+  return mod.meta;
 }
 
-/** 모든 slug 목록 (generateStaticParams용) */
+/** 활성 slug 목록 (generateStaticParams용) */
 export function getAllToolSlugs(): string[] {
-  return Object.keys(toolModules);
+  return Object.keys(toolModules).filter((slug) => toolModules[slug].meta.isActive);
 }
