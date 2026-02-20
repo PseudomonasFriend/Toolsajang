@@ -1,6 +1,6 @@
 # 툴사장 — 작업 현황 (WORK STATUS)
 
-> 최종 업데이트: 2026-02-20 (메뉴명 아이디어 툴·SEO·히스토리 반영)
+> 최종 업데이트: 2026-02-20 (SEO 제출 준비 완료)
 
 ---
 
@@ -23,9 +23,10 @@
   - 상세 페이지 (MDX 렌더, 광고·하단 홍보·관련 글)
   - 홈에 "장사 팁" 최신 3개 미리보기
   - 네비 "장사 팁" 메뉴 반영
-- [x] **장사 팁 글 18개** (가독성 스타일 적용, 단락·줄간격 정리)
+- [x] **장사 팁 글 28개** (18개 기존 + 10개 추가)
 - [x] `/blog` → `/tips` 리다이렉트
 - [x] **SEO**: `app/sitemap.ts`, `app/robots.ts`, JSON-LD (WebSite, Organization, Article)
+- [x] **OG 이미지**: `app/opengraph-image.tsx` (홈), `app/tools/[slug]/opengraph-image.tsx` (툴), `app/tips/[slug]/opengraph-image.tsx` (팁) — next/og ImageResponse 동적 생성
 - [x] About, Privacy, Terms 페이지 (기존 유지)
 
 ### Phase 3: 수익화 인프라
@@ -39,7 +40,14 @@
 - [x] CLAUDE.md (AI 에이전트 가이드)
 - [x] docs/TOOL_MODULE_PARALLEL_DESIGN.md (병렬 개발 설계)
 - [x] docs/DEPLOY.md (GitHub·Vercel 배포 가이드)
+- [x] docs/SEO_SUBMIT.md (Google/네이버 사이트 등록, sitemap 제출, 동적 OG 이미지 안내 — 보완 완료)
 - [x] 각 툴 폴더별 README.md
+
+### 테스트
+- [x] Vitest 설치 및 설정 (`vitest.config.ts`, package.json test 스크립트)
+- [x] 마진 계산기 단위 테스트 (`src/tools/margin-calculator/calculation.test.ts`) — 11개 테스트
+- [x] 부가세 계산기 단위 테스트 (`src/tools/vat-calculator/calculation.test.ts`) — 14개 테스트
+- [x] 손익분기점 계산기 단위 테스트 (`src/tools/break-even-calculator/calculation.test.ts`) — 12개 테스트
 
 ---
 
@@ -49,7 +57,9 @@
 - [x] 카테고리 필터 (툴 목록 페이지)
 - [x] 매출 목표·임대료 비율·할인가 역산·QR코드·D-day 계산기 (5종 추가 완료)
 - [x] 메뉴명 아이디어 툴 (Gemini/Groq/OpenRouter 무료 API 연동, POST /api/tools/menu-ideas)
-- [ ] 명세 17장 향후 툴: 글자수 카운터, 가게명 AI 아이디어 등
+- [x] 글자수 카운터 (실시간 글자수·바이트수·단어수·줄수 표시, 제한 기준 프로그레스바)
+- [x] 가게명 AI 아이디어 (Gemini/Groq/OpenRouter 무료 API 연동, POST /api/tools/shop-name-ideas)
+- [x] AI 툴 API Rate Limiting (IP당 분당 5회, in-memory Map 기반, 429 응답 + 한국어 에러)
 
 ### Phase 5: 장기 (선택)
 - [ ] 로그인·계산 결과 저장
@@ -61,9 +71,9 @@
 - [ ] AdSense 승인 후 슬롯 ID·환경 변수 설정
 - [ ] 자사 배너 이미지·링크 실제 등록 (ads.ts)
 - [ ] 테스트 코드 (선택)
-- [ ] og:image per page (선택)
-- [ ] 메뉴명 API 속도 제한 (IP당 N회/분, Upstash 등 — 남용 시 도입)
-- [ ] Google Search Console·네이버 서치어드바이저 사이트 등록 및 sitemap 제출 (docs/SEO_SUBMIT.md 참고)
+- [x] og:image per page — 홈/툴/팁 동적 OG 이미지 (next/og ImageResponse, 2026-02-19)
+- [x] 메뉴명·가게명 API 속도 제한 (IP당 분당 5회, in-memory — 추후 Upstash 전환 가능)
+- [ ] Google Search Console·네이버 서치어드바이저 사이트 등록 및 sitemap 제출 (docs/SEO_SUBMIT.md 참고, 코드 측 준비 완료 — 수동 작업 필요)
 
 ---
 
@@ -72,7 +82,9 @@
 | 항목 | 상태 |
 |------|------|
 | **배포** | Vercel 연동 완료, main 푸시 시 자동 배포 |
-| **툴** | 13개 구현·배포 (카테고리 필터, 메뉴명 AI 툴 포함) |
-| **장사 팁** | 18개 글, 목록/상세/홈 미리보기·가독성 스타일 적용 |
-| **SEO** | sitemap.xml, robots.txt, JSON-LD 적용 |
+| **툴** | 19개 구현 (글자수 카운터, 가게명 AI 아이디어 포함), AI 툴 Rate Limiting 적용 |
+| **장사 팁** | 28개 글, 목록/상세/홈 미리보기·가독성 스타일 적용 |
+| **OG 이미지** | 홈/툴(19개)/팁(28개) 동적 OG 이미지 자동 생성 (next/og) |
+| **SEO** | sitemap.xml, robots.txt, JSON-LD, 동적 OG 이미지, verification meta 슬롯, 전 페이지 OG·canonical 완비 — Search Console/서치어드바이저 등록만 남음 |
 | **광고/분석** | GA4·AdSense 스크립트 준비됨 (환경 변수 설정 시 동작) |
+| **테스트** | Vitest 설치, 계산기 3종 단위 테스트 37개 (마진·부가세·손익분기점) |

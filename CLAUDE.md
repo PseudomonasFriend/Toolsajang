@@ -8,7 +8,7 @@ ToolSajang (툴사장) is a B2C web platform providing free business calculators
 
 ## Tech Stack
 
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript (strict mode, `any` forbidden)
 - **Styling**: Tailwind CSS only (no inline styles, no CSS Modules)
 - **Content**: MDX via `next-mdx-remote` or `contentlayer2`
@@ -52,13 +52,17 @@ src/tools/margin-calculator/
 - `src/tools/index.ts` — central tool registry (getToolModule, getAllToolSlugs)
 - `src/data/tools.ts` — tool list for homepage/listing (from tools/index + upcoming)
 - `src/data/ads.ts` — custom banner data
-- `src/data/tips/` — **장사 팁 MDX files** (*.mdx), 18 articles
+- `src/data/tips/` — **장사 팁 MDX files** (*.mdx), 28 articles
 - `src/lib/tips.ts` — getTipsList, getTipBySlug, getLatestTips, getAllTipSlugs
 - `src/lib/format.ts`, `src/lib/utils.ts`, `src/lib/calculations.ts`
+- `src/lib/rate-limit.ts` — API rate limiting (RateLimiter interface + in-memory 구현, Upstash 교체 가능)
 - `src/components/common/CalculatorLayout.tsx`, `AdBanner.tsx`, `JsonLd.tsx`
 - `src/components/tips/TipCard.tsx` — tip list card
 - `src/app/tips/page.tsx` — tip list; `app/tips/[slug]/page.tsx` — tip detail (MDX)
 - `src/app/sitemap.ts`, `src/app/robots.ts` — SEO
+- `src/app/opengraph-image.tsx` — 홈 OG 이미지 (Edge Runtime)
+- `src/app/tools/[slug]/opengraph-image.tsx` — 툴별 OG 이미지 (Node.js Runtime)
+- `src/app/tips/[slug]/opengraph-image.tsx` — 팁별 OG 이미지 (Node.js Runtime)
 - `src/types/index.ts` — Tool, BlogPost/TipPost, CustomAd
 
 ### 장사 팁 (Tips)
@@ -117,9 +121,13 @@ Two ad types (`adsense` | `custom`) managed through `AdBanner.tsx`. Slot positio
 
 ## Environment Variables
 
+템플릿: `.env.local.example` 참고 (`.env.local`로 복사 후 값 입력)
+
 ```
-NEXT_PUBLIC_GA_ID         # Google Analytics 4
-NEXT_PUBLIC_ADSENSE_ID    # Google AdSense Publisher ID
-NEXT_PUBLIC_SITE_URL      # https://toolsajang.com
-NEXT_PUBLIC_SITE_NAME     # 툴사장
+NEXT_PUBLIC_SITE_URL                  # https://toolsajang.com
+NEXT_PUBLIC_SITE_NAME                 # 툴사장
+NEXT_PUBLIC_GA_ID                     # Google Analytics 4 (G-XXXXXXXXXX)
+NEXT_PUBLIC_ADSENSE_ID                # Google AdSense (ca-pub-XXXXXXXXXXXXXXXX)
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION  # Google Search Console 소유 확인 content 값
+NEXT_PUBLIC_NAVER_SITE_VERIFICATION   # 네이버 서치어드바이저 소유 확인 content 값
 ```
