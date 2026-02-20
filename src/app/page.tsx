@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { tools } from '@/data/tools';
 import ToolCard from '@/components/tools/ToolCard';
 import TipCard from '@/components/tips/TipCard';
 import AdBanner from '@/components/common/AdBanner';
 import { getLatestTips } from '@/lib/tips';
+
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
+export const metadata: Metadata = {
+  alternates: { canonical: BASE },
+};
 
 export default function HomePage() {
   const latestTips = getLatestTips(3);

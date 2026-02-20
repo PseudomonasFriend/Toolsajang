@@ -1,8 +1,17 @@
 import type { Metadata } from 'next';
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
 export const metadata: Metadata = {
   title: '서비스 소개',
   description: '툴사장은 소상공인과 자영업자를 위한 무료 비즈니스 계산 도구 플랫폼입니다.',
+  openGraph: {
+    title: '서비스 소개 | 툴사장',
+    description: '툴사장은 소상공인과 자영업자를 위한 무료 비즈니스 계산 도구 플랫폼입니다.',
+    url: `${BASE}/about`,
+    type: 'website',
+  },
+  alternates: { canonical: `${BASE}/about` },
 };
 
 export default function AboutPage() {

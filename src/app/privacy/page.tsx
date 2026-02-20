@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '개인정보처리방침',
   description: '툴사장 개인정보처리방침 안내 페이지입니다.',
+  robots: { index: false, follow: false },
 };
 
 export default function PrivacyPage() {

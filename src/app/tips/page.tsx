@@ -3,10 +3,19 @@ import { getTipsList } from '@/lib/tips';
 import TipCard from '@/components/tips/TipCard';
 import AdBanner from '@/components/common/AdBanner';
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsajang.com';
+
 export const metadata: Metadata = {
   title: '장사 팁',
   description:
     '소상공인·자영업자를 위한 경영, 세금, 마케팅 꿀팁. 마진·부가세·배달 수수료 등 실무 정리.',
+  openGraph: {
+    title: '장사 팁 | 툴사장',
+    description: '소상공인·자영업자를 위한 경영, 세금, 마케팅 꿀팁. 마진·부가세·배달 수수료 등 실무 정리.',
+    url: `${BASE}/tips`,
+    type: 'website',
+  },
+  alternates: { canonical: `${BASE}/tips` },
 };
 
 export default function TipsListPage() {
