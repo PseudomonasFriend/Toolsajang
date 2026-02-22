@@ -2,6 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 프로젝트 개요
+
+한국 소상공인·자영업자가 로그인 없이 3초 만에 비즈니스 계산 결과를 얻을 수 있는 무료 플랫폼. 계산기 19종 + 장사 팁 28개를 제공하며 Google AdSense로 수익화한다.
+- 도메인: https://toolsajang.com
+- 배포: Vercel (GitHub main 브랜치 자동 배포)
+- 수익 모델: Google AdSense + 자사 서비스 크로스 프로모션 배너
+
+**핵심 기능**:
+- 비즈니스 계산기 19종 (마진·부가세·손익분기점·급여·배달수수료·대출 등 순수 계산기 17종 + AI 툴 2종)
+- 장사 팁 MDX 콘텐츠 28개 (SEO 유입 + 계산기 연계)
+- AI 아이디어 툴: 메뉴명·가게명 추천 (Gemini/Groq/OpenRouter, IP당 분당 5회 Rate Limit)
+- 동적 OG 이미지 자동 생성 (홈 + 툴 19개 + 팁 28개)
+- Google Search Console·네이버 서치어드바이저 등록 완료
+
+**아키텍처**: Next.js 16 App Router + Tool Registry(`src/tools/index.ts`) 패턴. 각 툴은 `src/tools/[slug]/` 폴더에 calculation.ts·types.ts·UI 컴포넌트·index.ts로 캡슐화. 순수 계산기는 클라이언트 동기 계산, AI 툴은 `/api/tools/*` 서버 API 경유. 장사 팁은 MDX SSG. 외부 DB 없음.
+
 ## Project Overview
 
 ToolSajang (툴사장) is a B2C web platform providing free business calculators and tools for Korean small business owners. No login required — users get instant results. The master specification is `TOOLSAJANG_SPEC.md` (single source of truth for all development).
