@@ -127,7 +127,7 @@ export default function MarginCalculator() {
               placeholder="0"
               value={displayValues.sellingPrice}
               onChange={handleNumberChange('sellingPrice')}
-              className="h-12 w-full rounded-lg border border-gray-200 pl-8 pr-3 text-lg text-gray-900 placeholder:text-gray-300 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="h-12 w-full rounded-xl border border-gray-200 pl-8 pr-3 text-lg font-medium text-gray-900 placeholder:text-gray-300 transition-shadow focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               aria-label="판매가 입력"
             />
           </div>
@@ -152,7 +152,7 @@ export default function MarginCalculator() {
               placeholder="0"
               value={displayValues.costPrice}
               onChange={handleNumberChange('costPrice')}
-              className="h-12 w-full rounded-lg border border-gray-200 pl-8 pr-3 text-lg text-gray-900 placeholder:text-gray-300 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="h-12 w-full rounded-xl border border-gray-200 pl-8 pr-3 text-lg font-medium text-gray-900 placeholder:text-gray-300 transition-shadow focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               aria-label="매입 원가 입력"
             />
           </div>
@@ -197,7 +197,7 @@ export default function MarginCalculator() {
                   placeholder="0"
                   value={displayValues.commissionRate}
                   onChange={handleNumberChange('commissionRate', true)}
-                  className="h-11 w-full rounded-lg border border-gray-200 pl-3 pr-8 text-base text-gray-900 placeholder:text-gray-300 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="h-11 w-full rounded-xl border border-gray-200 pl-3 pr-8 text-base font-medium text-gray-900 placeholder:text-gray-300 transition-shadow focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   aria-label="수수료율 입력"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -225,7 +225,7 @@ export default function MarginCalculator() {
                   placeholder="0"
                   value={displayValues.shippingCost}
                   onChange={handleNumberChange('shippingCost')}
-                  className="h-11 w-full rounded-lg border border-gray-200 pl-8 pr-3 text-base text-gray-900 placeholder:text-gray-300 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="h-11 w-full rounded-xl border border-gray-200 pl-8 pr-3 text-base font-medium text-gray-900 placeholder:text-gray-300 transition-shadow focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   aria-label="배송비 입력"
                 />
               </div>
@@ -250,7 +250,7 @@ export default function MarginCalculator() {
                   placeholder="0"
                   value={displayValues.otherCost}
                   onChange={handleNumberChange('otherCost')}
-                  className="h-11 w-full rounded-lg border border-gray-200 pl-8 pr-3 text-base text-gray-900 placeholder:text-gray-300 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="h-11 w-full rounded-xl border border-gray-200 pl-8 pr-3 text-base font-medium text-gray-900 placeholder:text-gray-300 transition-shadow focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   aria-label="기타 비용 입력"
                 />
               </div>
@@ -279,7 +279,7 @@ export default function MarginCalculator() {
       <button
         type="button"
         onClick={handleReset}
-        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:bg-gray-50"
+        className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 transition-all duration-200 hover:bg-gray-50 hover:text-gray-900 active:scale-[0.98]"
         aria-label="입력값 초기화"
       >
         <RotateCcw className="h-4 w-4" />
@@ -360,7 +360,7 @@ export default function MarginCalculator() {
           <button
             type="button"
             onClick={handleCopy}
-            className="mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-blue-600 text-sm font-medium text-white hover:bg-blue-700"
+            className="mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-blue-600 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow active:scale-[0.98]"
             aria-label="계산 결과 클립보드에 복사"
           >
             {copied ? (

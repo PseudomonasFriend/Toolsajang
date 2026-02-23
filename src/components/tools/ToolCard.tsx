@@ -18,6 +18,7 @@ import {
   RefreshCw,
   ShoppingCart,
   UtensilsCrossed,
+  Store,
 } from 'lucide-react';
 import type { Tool } from '@/types';
 import { cn } from '@/lib/utils';
@@ -42,6 +43,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   RefreshCw,
   ShoppingCart,
   UtensilsCrossed,
+  Store,
 };
 
 interface ToolCardProps {
@@ -56,31 +58,36 @@ export default function ToolCard({ tool }: ToolCardProps) {
   const card = (
     <div
       className={cn(
-        'relative flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-xl bg-white p-4 shadow-sm transition-shadow',
+        'group relative flex min-h-[100px] flex-col items-center justify-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition-all duration-300',
         isDisabled
           ? 'cursor-default opacity-60'
-          : 'cursor-pointer hover:shadow-md'
+          : 'cursor-pointer hover:-translate-y-1 hover:shadow-md active:scale-[0.98]'
       )}
     >
       {/* NEW 뱃지 */}
       {tool.isNew && tool.isActive && (
-        <span className="absolute right-2 top-2 rounded-full bg-amber-500 px-2 py-0.5 text-[10px] font-bold text-white">
+        <span className="absolute right-2 top-2 rounded-full bg-amber-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-white shadow-sm ring-1 ring-white/20">
           NEW
         </span>
       )}
 
       {/* 준비 중 뱃지 */}
       {isDisabled && (
-        <span className="absolute right-2 top-2 rounded-full bg-gray-300 px-2 py-0.5 text-[10px] font-bold text-white">
+        <span className="absolute right-2 top-2 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-bold text-gray-500">
           준비 중
         </span>
       )}
 
-      <Icon className="h-8 w-8 text-blue-600" />
-      <span className="text-sm font-semibold text-gray-900">{tool.name}</span>
-      <span className="text-center text-xs text-gray-500">
-        {tool.description}
-      </span>
+      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-50/80 transition-colors group-hover:bg-blue-100/80">
+        <Icon className="h-6 w-6 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
+      </div>
+
+      <div className="flex flex-col items-center gap-1 text-center">
+        <span className="text-sm font-bold text-gray-900 leading-tight">{tool.name}</span>
+        <span className="text-[11px] text-gray-500 leading-snug">
+          {tool.description}
+        </span>
+      </div>
     </div>
   );
 

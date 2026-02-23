@@ -9,20 +9,20 @@ export default function Footer() {
         <AdBanner position="footer-banner" type="custom" />
       </div>
 
-      <div className="mx-auto max-w-3xl px-4 py-6">
-        <div className="flex flex-col items-center gap-3 text-center text-sm text-gray-500">
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-gray-700">
+      <div className="mx-auto max-w-3xl px-4 py-8">
+        <div className="flex flex-col items-center gap-4 text-center text-sm text-gray-500">
+          <div className="flex gap-5 font-medium">
+            <Link href="/privacy" className="transition-colors hover:text-blue-600">
               개인정보처리방침
             </Link>
-            <Link href="/terms" className="hover:text-gray-700">
+            <Link href="/terms" className="transition-colors hover:text-blue-600">
               이용약관
             </Link>
-            <Link href="/about" className="hover:text-gray-700">
+            <Link href="/about" className="transition-colors hover:text-blue-600">
               서비스 소개
             </Link>
           </div>
-          <p>&copy; {new Date().getFullYear()} 툴사장. All rights reserved.</p>
+          <p className="tracking-wide">&copy; {new Date().getFullYear()} 툴사장. All rights reserved.</p>
         </div>
       </div>
     </footer>

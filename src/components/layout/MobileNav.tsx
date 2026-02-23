@@ -32,13 +32,18 @@ export default function MobileNav() {
               key={item.href}
               href={item.href}
               className={cn(
-                'flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-0.5 text-xs',
-                isActive ? 'text-blue-600' : 'text-gray-500'
+                'flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-1 text-xs transition-all active:scale-90',
+                isActive ? 'text-blue-600 font-medium' : 'text-gray-500 hover:text-gray-800'
               )}
               aria-label={item.label}
               aria-current={isActive ? 'page' : undefined}
             >
-              <Icon className="h-5 w-5" />
+              <Icon
+                className={cn(
+                  "h-5 w-5 transition-transform duration-300",
+                  isActive && "scale-110"
+                )}
+              />
               <span>{item.label}</span>
             </Link>
           );

@@ -73,37 +73,60 @@ NEXT_PUBLIC_NAVER_SITE_VERIFICATION=여기에_발급받은_content_값
 
 ---
 
-## 3. 공유 이미지(OG 이미지) 설정 (선택)
+## 3. 동적 OG 이미지 (이미 적용됨)
 
-SNS·카카오 등에서 링크 공유 시 미리보기 이미지를 쓰려면:
+SNS·카카오 등에서 링크 공유 시 미리보기 이미지는 **next/og ImageResponse**로 자동 생성됩니다.
 
-1. **이미지 제작**: 1200×630px 권장. `public/og.png` 로 저장
-2. **환경 변수** (실제 배포 URL 기준):
+| 경로 | OG 이미지 파일 |
+|------|--------------|
+| 홈 (`/`) | `src/app/opengraph-image.tsx` |
+| 툴 (`/tools/[slug]`) | `src/app/tools/[slug]/opengraph-image.tsx` |
+| 장사 팁 (`/tips/[slug]`) | `src/app/tips/[slug]/opengraph-image.tsx` |
 
-```env
-NEXT_PUBLIC_OG_IMAGE_URL=https://toolsajang.com/og.png
-```
-
-설정 시 루트 메타데이터의 `openGraph.images`에 자동 반영됩니다. 툴/팁 개별 페이지는 현재 기본 메타만 사용하며, 필요 시 각 `generateMetadata`에서 `openGraph.images` 추가 가능.
+- 별도 이미지 파일 없이 페이지마다 고유한 1200×630 OG 이미지가 동적으로 생성됩니다.
+- 기존 `NEXT_PUBLIC_OG_IMAGE_URL` 환경 변수는 홈 루트 레이아웃 fallback으로만 사용합니다.
 
 ---
 
-## 4. 점검 체크리스트
+## 4. sitemap.xml 구조
+
+`src/app/sitemap.ts`가 빌드 시 자동으로 생성하는 URL 목록:
+
+| URL 유형 | 예시 |
+|---------|------|
+| 홈 | `https://toolsajang.com/` |
+| 툴 목록 | `https://toolsajang.com/tools` |
+| 개별 툴 | `https://toolsajang.com/tools/margin-calculator` |
+| 장사 팁 목록 | `https://toolsajang.com/tips` |
+| 개별 팁 | `https://toolsajang.com/tips/break-even-basics` |
+| 정적 페이지 | `/about`, `/privacy`, `/terms` |
+
+배포 후 `https://toolsajang.com/sitemap.xml`에서 전체 목록 확인 가능합니다.
+
+---
+
+## 5. 점검 체크리스트
 
 | 항목 | 확인 |
 |------|------|
-| `NEXT_PUBLIC_SITE_URL`이 실제 도메인과 동일한지 | |
-| 배포 후 `https://도메인/sitemap.xml` 브라우저에서 열리는지 | |
-| 배포 후 `https://도메인/robots.txt`에 sitemap URL이 있는지 | |
-| Google Search Console 소유권 확인 완료 | |
-| Google에 sitemap 제출 완료 | |
-| 네이버 서치어드바이저 소유권 확인 완료 | |
-| 네이버에 sitemap 제출 완료 | |
-| (선택) OG 이미지 설정 후 공유 테스트 | |
+| `NEXT_PUBLIC_SITE_URL`이 실제 도메인과 동일한지 | ✅ |
+| Vercel 환경 변수에 `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` 설정됨 | ✅ |
+| Vercel 환경 변수에 `NEXT_PUBLIC_NAVER_SITE_VERIFICATION` 설정됨 | ✅ |
+| 배포 후 `https://도메인/sitemap.xml` 브라우저에서 열리는지 | ✅ |
+| 배포 후 `https://도메인/robots.txt`에 sitemap URL이 있는지 | ✅ |
+| 배포 후 view-source로 `google-site-verification` meta 확인 | ✅ |
+| 배포 후 view-source로 `naver-site-verification` meta 확인 | ✅ |
+| Google Search Console 소유권 확인 완료 | ✅ |
+| Google에 sitemap 제출 완료 | ✅ |
+| 네이버 서치어드바이저 소유권 확인 완료 | ✅ |
+| 네이버에 sitemap 제출 완료 | ✅ |
+| SNS 공유 시 OG 이미지(동적) 정상 표시 확인 | (선택 확인) |
 
 ---
 
-## 5. 참고 링크
+## 6. 참고 링크
 
 - [Google Search Console 도움말](https://support.google.com/webmasters)
 - [네이버 서치어드바이저 가이드](https://searchadvisor.naver.com/guide)
+- [Open Graph 디버거 (Facebook)](https://developers.facebook.com/tools/debug/)
+- [카카오 OG 캐시 초기화](https://developers.kakao.com/tool/clear/og)
