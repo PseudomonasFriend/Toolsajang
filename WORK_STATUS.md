@@ -1,6 +1,6 @@
 # 툴사장 — 작업 현황 (WORK STATUS)
 
-> 최종 업데이트: 2026-02-22 (WORK_STATUS 정리 — 완료 Phase 축소)
+> 최종 업데이트: 2026-02-23 (WORK_STATUS 정리 — UI 디자인 고도화 적용)
 
 ---
 
@@ -11,6 +11,7 @@
 ### Phase 3: 수익화 인프라
 ### 문서화
 ### 테스트 (Vitest 16종 210개 단위 테스트 전부 통과)
+### 사이트 전반 UI 및 마이크로 애니메이션 디자인 고도화 (GPU 작업 배제)
 - Phase 4: 툴 확장 (카테고리 필터, 5종 계산기 추가, AI 툴, Rate Limiting)
 - AI 툴 비활성화 (가게명·메뉴명 isActive: false, getActiveTools() 적용)
 - 인프라: 도메인 연결 (toolsajang.com), 누락 파일 4개 git 추가, vitest.config.ts 수정

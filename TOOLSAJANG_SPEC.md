@@ -376,13 +376,14 @@ function calculateMargin(input: MarginInput): MarginOutput {
 - **계산 결과 숫자**: 24px 이상, bold
 - **제목 계층**: h1(28px) > h2(22px) > h3(18px)
 
-### 8.4 레이아웃
-
+### 8.4 레이아웃 및 뷰
 - **모바일 (기본)**: 단일 컬럼, 최대 너비 100%, 패딩 16px
 - **데스크탑**: `max-width: 480px` 중앙 정렬 (모바일 앱 느낌 유지)
   - 블로그 페이지만 `max-width: 720px`로 확장
-- **카드**: `rounded-xl`, `shadow-sm`, 패딩 16~20px
-- **버튼**: `rounded-lg`, 높이 48px 이상, 폰트 16px bold
+- **카드**: `rounded-2xl`, `shadow-sm`, 패딩 16~20px, 터치 시 `active:scale-[0.98]` 효과, 호버 시 살짝 떠오르는 모션(`hover:-translate-y-1 hover:shadow-md`) 적용.
+- **버튼**: `rounded-xl`, 높이 48px 이상, 폰트 16px bold, 터치 스케일링(`active:scale-[0.98]`) 적용.
+- **전환 애니메이션**: 최상위 CSS에 `transition-colors duration-300`, 입력 폼(`Input`)의 포커스링 디자인 추가(`ring-blue-500/30`).
+- **헤더**: Glassmorphism 처리(`bg-white/85 backdrop-blur-md`) 및 은은한 그림자(`shadow-sm`).
 
 ### 8.5 반응형 전략
 
