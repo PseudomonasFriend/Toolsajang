@@ -58,7 +58,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
   const card = (
     <div
       className={cn(
-        'group relative flex min-h-[100px] flex-col items-center justify-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition-all duration-300',
+        'group relative flex h-full min-h-[130px] flex-col items-center justify-center gap-2.5 rounded-2xl bg-white p-4 shadow-sm transition-all duration-300',
         isDisabled
           ? 'cursor-default opacity-60'
           : 'cursor-pointer hover:-translate-y-1 hover:shadow-md active:scale-[0.98]'
