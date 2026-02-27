@@ -1,0 +1,16 @@
+# 의존성
+node_modules/
+
+# 빌드 산출물
+.next/
+dist/
+build/
+coverage/
+
+# 패키지 잠금 파일
+*.lock
+
+# 압축/맵 파일
+*.min.js
+*.min.css
+*.map

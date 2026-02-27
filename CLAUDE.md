@@ -18,79 +18,57 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **아키텍처**: Next.js 16 App Router + Tool Registry(`src/tools/index.ts`) 패턴. 각 툴은 `src/tools/[slug]/` 폴더에 calculation.ts·types.ts·UI 컴포넌트·index.ts로 캡슐화. 순수 계산기는 클라이언트 동기 계산, AI 툴은 `/api/tools/*` 서버 API 경유. 장사 팁은 MDX SSG. 외부 DB 없음.
 
-## Project Overview
-
-ToolSajang (툴사장) is a B2C web platform providing free business calculators and tools for Korean small business owners. No login required — users get instant results. The master specification is `TOOLSAJANG_SPEC.md` (single source of truth for all development).
-
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript (strict mode, `any` forbidden)
-- **Styling**: Tailwind CSS only (no inline styles, no CSS Modules)
-- **Content**: MDX via `next-mdx-remote` or `contentlayer2`
-- **Package Manager**: pnpm (preferred) or npm
-- **Deployment**: Vercel
-- **Icons**: Lucide React
-- **Font**: Pretendard (Korean + English)
+| 항목 | 내용 |
+|------|------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript strict (`any` 금지) |
+| Styling | Tailwind CSS only (inline styles, CSS Modules 금지) |
+| Content | MDX via `next-mdx-remote` |
+| Package | pnpm |
+| Icons/Font | Lucide React / Pretendard |
 
 ## Common Commands
 
 ```bash
-pnpm dev          # Start dev server
-pnpm build        # Production build
-pnpm lint         # Run linter
-pnpm start        # Start production server
+pnpm dev     # 개발 서버
+pnpm build   # 프로덕션 빌드
+pnpm lint    # 린트
+pnpm start   # 프로덕션 서버
 ```
 
 ## Architecture
 
-### Tool Module System (per-tool folder)
+### Tool Module System
 
-Each tool is a **self-contained module** under `src/tools/[tool-slug]/`:
+각 툴은 `src/tools/[slug]/` 아래 자기완결 모듈: `README.md` (스펙), `types.ts`, `calculation.ts`, `[Tool].tsx` (`'use client'`), `index.ts` (meta·seo·Component export).
 
-```
-src/tools/margin-calculator/
-  README.md            # Tool-specific spec (inputs, outputs, calculation, UI rules)
-  types.ts             # Tool-specific types
-  calculation.ts       # Calculation logic
-  MarginCalculator.tsx # UI component ('use client')
-  index.ts             # meta, seo, Component export
-```
-
-- **Tool-specific spec**: Each tool folder contains a `README.md` with all info needed to implement/modify that tool. Subagents only need to read this file + the tool folder.
-- **Central registry**: `src/tools/index.ts` imports all tool modules and provides `getToolModule()`, `getAllToolSlugs()`, etc.
-- **Dynamic route**: `src/app/tools/[slug]/page.tsx` loads tools by slug from the registry.
-- **Upcoming tools** (not yet implemented): Listed in `src/data/tools.ts` with `isActive: false`.
+- 서브에이전트는 해당 툴의 `README.md` + 툴 폴더만 읽으면 됨
+- **Central registry**: `src/tools/index.ts` — `getToolModule()`, `getAllToolSlugs()` 등
+- **Dynamic route**: `src/app/tools/[slug]/page.tsx`
+- **미구현 툴**: `src/data/tools.ts`의 `isActive: false` 항목
 
 ### Key Directories
 
-- `src/tools/` — **all tool modules** (calculation, types, UI, README per tool)
+- `src/tools/` — all tool modules (calculation, types, UI, README per tool)
 - `src/tools/index.ts` — central tool registry (getToolModule, getAllToolSlugs)
-- `src/data/tools.ts` — tool list for homepage/listing (from tools/index + upcoming)
-- `src/data/ads.ts` — custom banner data
-- `src/data/tips/` — **장사 팁 MDX files** (*.mdx), 28 articles
+- `src/data/tools.ts` — tool list for homepage/listing
+- `src/data/tips/` — 장사 팁 MDX files (*.mdx), 28 articles
 - `src/lib/tips.ts` — getTipsList, getTipBySlug, getLatestTips, getAllTipSlugs
-- `src/lib/format.ts`, `src/lib/utils.ts`, `src/lib/calculations.ts`
-- `src/lib/rate-limit.ts` — API rate limiting (RateLimiter interface + in-memory 구현, Upstash 교체 가능)
+- `src/lib/rate-limit.ts` — API rate limiting (in-memory, Upstash 교체 가능)
 - `src/components/common/CalculatorLayout.tsx`, `AdBanner.tsx`, `JsonLd.tsx`
-- `src/components/tips/TipCard.tsx` — tip list card
-- `src/app/tips/page.tsx` — tip list; `app/tips/[slug]/page.tsx` — tip detail (MDX)
+- `src/app/tips/page.tsx`, `app/tips/[slug]/page.tsx` — tip list/detail (MDX)
 - `src/app/sitemap.ts`, `src/app/robots.ts` — SEO
-- `src/app/opengraph-image.tsx` — 홈 OG 이미지 (Edge Runtime)
-- `src/app/tools/[slug]/opengraph-image.tsx` — 툴별 OG 이미지 (Node.js Runtime)
-- `src/app/tips/[slug]/opengraph-image.tsx` — 팁별 OG 이미지 (Node.js Runtime)
-- `src/types/index.ts` — Tool, BlogPost/TipPost, CustomAd
+- OG 이미지: `src/app/opengraph-image.tsx` (홈), `tools/[slug]/opengraph-image.tsx`, `tips/[slug]/opengraph-image.tsx`
 
 ### 장사 팁 (Tips)
 
-- **URL**: `/tips` (list), `/tips/[slug]` (detail). Content in `src/data/tips/*.mdx`.
-- **List**: `getTipsList()` from `src/lib/tips.ts`. TipCard, ad slots every 3 items.
-- **Detail**: `getTipBySlug(slug)`, MDX via `next-mdx-remote/rsc`, `.tip-content` styling in `globals.css`.
-- **Home**: `getLatestTips(3)` for preview. Nav: "장사 팁" → `/tips`.
+URL: `/tips` (list), `/tips/[slug]` (detail). `src/data/tips/*.mdx` → `getTipsList()` / `getTipBySlug()` via `src/lib/tips.ts`. MDX via `next-mdx-remote/rsc`, `.tip-content` styling in `globals.css`. TipCard 목록에서 3개마다 광고 슬롯 삽입.
 
 ### Ad Slot System
 
-Two ad types (`adsense` | `custom`) managed through `AdBanner.tsx`. Slot positions are defined in spec section 9.2. Ad slots must not break layout when empty (pre-AdSense approval).
+`AdBanner.tsx`로 `adsense` | `custom` 두 타입 관리. 광고 슬롯은 레이아웃을 깨지 않아야 함 (AdSense 미승인 상태에서도 빈 슬롯 허용).
 
 ## Coding Rules (Non-Negotiable)
 
@@ -103,6 +81,7 @@ Two ad types (`adsense` | `custom`) managed through `AdBanner.tsx`. Slot positio
 7. **AdSense script** managed in root `layout.tsx`, not inline
 8. **Images** in `/public/images/`, always use Next.js `Image` component
 9. **Accessibility**: aria labels on all interactive elements
+10. **색상**: primary=blue-600, accent=amber-500, success=green-600, danger=red-500, bg=gray-50
 
 ## Adding a New Tool (Checklist)
 
@@ -116,34 +95,14 @@ Two ad types (`adsense` | `custom`) managed through `AdBanner.tsx`. Slot positio
 8. Move tool from `upcomingTools` to remove from `src/data/tools.ts` (if it was listed there)
 9. Verify: mobile layout, ad slots (`tool-result-bottom`, `tool-page-bottom`), `pnpm build`
 
-## Design Tokens
-
-| Purpose | Tailwind Class |
-|---------|---------------|
-| Primary | `blue-600` |
-| Primary Hover | `blue-700` |
-| Accent/CTA | `amber-500` |
-| Success/Profit | `green-600` |
-| Warning/Loss | `red-500` |
-| Background | `gray-50` |
-| Card Surface | `white` |
-| Text Primary | `gray-900` |
-| Text Secondary | `gray-500` |
-| Border | `gray-200` |
-
-## Git Conventions
-
-- Commit messages in Korean with prefixes: `feat:`, `fix:`, `docs:`
-
 ## Environment Variables
 
-템플릿: `.env.local.example` 참고 (`.env.local`로 복사 후 값 입력)
+`.env.local.example` 참고. 주요 변수:
 
 ```
 NEXT_PUBLIC_SITE_URL                  # https://toolsajang.com
-NEXT_PUBLIC_SITE_NAME                 # 툴사장
-NEXT_PUBLIC_GA_ID                     # Google Analytics 4 (G-XXXXXXXXXX)
-NEXT_PUBLIC_ADSENSE_ID                # Google AdSense (ca-pub-XXXXXXXXXXXXXXXX)
-NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION  # Google Search Console 소유 확인 content 값
-NEXT_PUBLIC_NAVER_SITE_VERIFICATION   # 네이버 서치어드바이저 소유 확인 content 값
+NEXT_PUBLIC_GA_ID                     # Google Analytics 4
+NEXT_PUBLIC_ADSENSE_ID                # Google AdSense
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION  # Search Console 소유 확인
+NEXT_PUBLIC_NAVER_SITE_VERIFICATION   # 네이버 서치어드바이저 소유 확인
 ```
