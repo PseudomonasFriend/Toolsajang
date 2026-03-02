@@ -18,6 +18,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **아키텍처**: Next.js 16 App Router + Tool Registry(`src/tools/index.ts`) 패턴. 각 툴은 `src/tools/[slug]/` 폴더에 calculation.ts·types.ts·UI 컴포넌트·index.ts로 캡슐화. 순수 계산기는 클라이언트 동기 계산, AI 툴은 `/api/tools/*` 서버 API 경유. 장사 팁은 MDX SSG. 외부 DB 없음.
 
+## Obsidian 노트
+- 기획/아이디어: `C:\Projects_local\_notes\Projects\Toolsajang.md`
+
 ## Tech Stack
 
 | 항목 | 내용 |
@@ -106,3 +109,14 @@ NEXT_PUBLIC_ADSENSE_ID                # Google AdSense
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION  # Search Console 소유 확인
 NEXT_PUBLIC_NAVER_SITE_VERIFICATION   # 네이버 서치어드바이저 소유 확인
 ```
+
+## HQ 지시사항
+
+> `_HQ/Projects/Toolsajang.md`와 동기화. 변경은 HQ 파일에서 먼저.
+
+**상태**: 활성
+**HQ 우선순위**:
+1. AdSense 심사 결과 대기 → 승인 확인
+2. ESLint v9 마이그레이션 처리 (flat config 전환)
+**보류/결정**:
+- 신규 계산기 추가는 AdSense 승인 후 재검토
