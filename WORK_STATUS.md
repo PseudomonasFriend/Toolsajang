@@ -1,28 +1,20 @@
 # 툴사장 — 작업 현황 (WORK STATUS)
 
-> 최종 업데이트: 2026-02-23 (WORK_STATUS 정리 — UI 디자인 고도화 적용)
+> 최종 업데이트: 2026-03-02 (Progressive Disclosure 리팩토링 — 6개 계산기 분해)
 
 ---
 
 ## 완료된 작업
 
-### Phase 1: MVP
-### Phase 2: 장사 팁 + 콘텐츠·SEO
-### Phase 3: 수익화 인프라
-### 문서화
-### 테스트 (Vitest 16종 210개 단위 테스트 전부 통과)
-### 사이트 전반 UI 및 마이크로 애니메이션 디자인 고도화 (GPU 작업 배제)
-- Phase 4: 툴 확장 (카테고리 필터, 5종 계산기 추가, AI 툴, Rate Limiting)
-- AI 툴 비활성화 (가게명·메뉴명 isActive: false, getActiveTools() 적용)
-- 인프라: 도메인 연결 (toolsajang.com), 누락 파일 4개 git 추가, vitest.config.ts 수정
-- AdSense 코드 직접 삽입 + ads.txt 반영 + GDPR 동의 메시지 + 계정 등록
-- privacy/terms noindex 제거 + OG/canonical 추가 + sitemap 반영
-- og:image per page — 홈/툴/팁 동적 OG 이미지 (next/og ImageResponse)
-- Google Search Console·네이버 서치어드바이저 사이트 등록 및 sitemap 제출
+- Phase 1~4: MVP + 팁 + 수익화 + 확장 (17개 활성 계산기, 28개 장사 팁, AdSense 통합, Rate Limiting)
+- 사이트 고도화 (Vitest 210개 테스트 통과, 동적 OG 이미지, SEO 최적화, Progressive Disclosure 리팩토링 — 6개 계산기 분해 완료)
 
 ---
 
 ## 미완성 / 추후 진행
+
+### ESLint v9 마이그레이션
+- [ ] next lint 실패 — ESLint v9 의존성 충돌 해결 필요 (현재: `.eslintrc.json` legacy format)
 
 ### Phase 5: 장기 (선택)
 - [ ] 로그인·계산 결과 저장
