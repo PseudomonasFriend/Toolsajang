@@ -1,5 +1,6 @@
 import { getCustomAdByPosition } from '@/data/ads';
 import Image from 'next/image';
+import AdSenseUnit from '@/components/common/AdSenseUnit';
 
 interface AdBannerProps {
   position: string;
@@ -38,8 +39,9 @@ export default function AdBanner({ position, type, className }: AdBannerProps) {
     );
   }
 
-  /* AdSense — 승인 전에는 빈 상태 */
-  if (!process.env.NEXT_PUBLIC_ADSENSE_ID) return null;
+  /* AdSense — 승인 전에는 ins 태그만 유지 (자동 광고가 채움) */
+  const adClient = process.env.NEXT_PUBLIC_ADSENSE_ID;
+  if (!adClient) return null;
 
   return (
     <div className={className}>
@@ -47,13 +49,8 @@ export default function AdBanner({ position, type, className }: AdBannerProps) {
         <span className="mb-1 inline-block text-[10px] text-gray-400">
           광고
         </span>
-        <ins
-          className="adsbygoogle block"
-          data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_ID}
-          data-ad-slot={position}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+        {/* adsbygoogle.push()는 클라이언트 컴포넌트에서 처리 */}
+        <AdSenseUnit position={position} adClient={adClient} />
       </div>
     </div>
   );
