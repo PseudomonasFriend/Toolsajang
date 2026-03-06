@@ -24,6 +24,9 @@ import * as shopNameIdeas from './shop-name-ideas';
 import * as cardFeeCalculator from './card-fee-calculator';
 import * as laborCostRatio from './labor-cost-ratio';
 import * as deliveryProfitCalculator from './delivery-profit-calculator';
+import * as startupCostCalculator from './startup-cost-calculator';
+import * as monthlyExpenseCalculator from './monthly-expense-calculator';
+import * as salesForecastCalculator from './sales-forecast-calculator';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -56,6 +59,9 @@ const toolModules: Record<string, ToolModule> = {
   [cardFeeCalculator.meta.slug]: cardFeeCalculator,
   [laborCostRatio.meta.slug]: laborCostRatio,
   [deliveryProfitCalculator.meta.slug]: deliveryProfitCalculator,
+  [startupCostCalculator.meta.slug]: startupCostCalculator,
+  [monthlyExpenseCalculator.meta.slug]: monthlyExpenseCalculator,
+  [salesForecastCalculator.meta.slug]: salesForecastCalculator,
 };
 
 /* === 외부에서 사용하는 함수들 === */
