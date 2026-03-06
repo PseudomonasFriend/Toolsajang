@@ -9,7 +9,7 @@ export const meta: Tool = {
   icon: 'Store',
   category: '마케팅',
   isNew: true,
-  isActive: false,
+  isActive: true,
 };
 
 /** 가게명 아이디어 SEO 메타데이터 */
