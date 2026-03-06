@@ -21,6 +21,9 @@ import * as unitPriceCalculator from './unit-price-calculator';
 import * as rentPerPyeong from './rent-per-pyeong';
 import * as foodCostCalculator from './food-cost-calculator';
 import * as shopNameIdeas from './shop-name-ideas';
+import * as cardFeeCalculator from './card-fee-calculator';
+import * as laborCostRatio from './labor-cost-ratio';
+import * as deliveryProfitCalculator from './delivery-profit-calculator';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -50,6 +53,9 @@ const toolModules: Record<string, ToolModule> = {
   [rentPerPyeong.meta.slug]: rentPerPyeong,
   [foodCostCalculator.meta.slug]: foodCostCalculator,
   [shopNameIdeas.meta.slug]: shopNameIdeas,
+  [cardFeeCalculator.meta.slug]: cardFeeCalculator,
+  [laborCostRatio.meta.slug]: laborCostRatio,
+  [deliveryProfitCalculator.meta.slug]: deliveryProfitCalculator,
 };
 
 /* === 외부에서 사용하는 함수들 === */
