@@ -117,10 +117,11 @@ NEXT_PUBLIC_NAVER_SITE_VERIFICATION   # 네이버 서치어드바이저 소유 �
 **상태**: 활성 (수익 보조 프로젝트)
 **목표**: 6월 100K PV, 월 10~15만원 AdSense
 **HQ 우선순위**:
-1. ESLint v9 마이그레이션 — flat config 전환, `pnpm lint` 에러 0건
-2. AdSense 자동 광고 ON + 수동 슬롯 ID 설정 (HY 콘솔 작업 필요)
-3. AI 툴 2종 활성화 — menu-name-ideas, shop-name-ideas (`isActive: true`)
-4. 4월: 신규 계산기 3~5종 (카드수수료, 인건비비율, 창업비용, 매출예측, 배달순이익)
-5. 장사 팁 10편 추가 + 내부 링크 강화 (계산기↔팁 양방향)
+1. ~~ESLint v9 마이그레이션~~ ✅ 완료 (2026-03-06, 에러 133→0건)
+2. ~~AdSense 승인~~ ✅ 완료 (2026-03-05, 자동광고 ON)
+3. 수동 광고 슬롯 위치 최적화 (HY 콘솔 작업 필요)
+4. AI 툴 2종 활성화 — menu-name-ideas, shop-name-ideas (`isActive: true`)
+5. 4월: 신규 계산기 3~5종 (카드수수료, 인건비비율, 창업비용, 매출예측, 배달순이익)
+6. 장사 팁 10편 추가 + 내부 링크 강화 (계산기↔팁 양방향)
 **보류/결정**:
 - 카카오 미니앱은 6월 조사 후 go/no-go 결정
