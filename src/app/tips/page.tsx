@@ -39,14 +39,16 @@ export default function TipsListPage() {
           {tips.map((tip, index) => (
             <div key={tip.slug}>
               <TipCard tip={tip} />
-              {/* 3~4번째 카드 사이 광고 슬롯 */}
-              {(index + 1) % 3 === 0 && index < tips.length - 1 && (
-                <AdBanner
-                  position={`tips-list-${Math.floor((index + 1) / 3)}`}
-                  type="adsense"
-                  className="my-4"
-                />
-              )}
+              {/* 3번째 카드마다 광고 슬롯 삽입 (최대 3개) */}
+              {(index + 1) % 3 === 0 &&
+                index < tips.length - 1 &&
+                Math.floor((index + 1) / 3) <= 3 && (
+                  <AdBanner
+                    position={`tip-list-${Math.floor((index + 1) / 3)}`}
+                    type="adsense"
+                    className="my-4"
+                  />
+                )}
             </div>
           ))}
         </div>

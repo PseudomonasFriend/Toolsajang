@@ -2,14 +2,25 @@
 
 import { useEffect, useRef } from 'react';
 
-/** AdSense 슬롯 ID 매핑 — 콘솔에서 생성 후 채움 */
+/**
+ * AdSense 슬롯 ID 매핑
+ * 각 슬롯 ID는 AdSense 콘솔(광고 > 광고 단위)에서 생성 후 입력
+ *
+ * 슬롯 위치별 용도:
+ * - tool-result-bottom : 계산기 결과 하단 (전환율 높은 위치)
+ * - home-mid           : 홈페이지 툴 그리드 아래 (노출량 많음)
+ * - tips-bottom        : 팁 본문 하단 (체류 시간 길어 CTR 유리)
+ * - tip-list-1~3       : 팁 목록 카드 사이 삽입 (스크롤 중 노출)
+ * - tip-content-mid    : 팁 본문 중간 삽입 (가장 높은 가시성)
+ */
 const AD_SLOTS: Record<string, string> = {
-  'tool-result-bottom': '', // AdSense 콘솔에서 생성 후 입력
-  'tool-page-bottom': '',
-  'tip-list-between': '',
-  'homepage-top': '',
-  'home-mid': '',
-  'home-bottom': '',
+  'tool-result-bottom': '', // 계산기 결과 하단 — AdSense 콘솔에서 생성 후 입력
+  'home-mid': '',           // 홈페이지 중단
+  'tips-bottom': '',        // 팁 본문 하단
+  'tip-list-1': '',         // 팁 목록 3번째 카드 뒤
+  'tip-list-2': '',         // 팁 목록 6번째 카드 뒤
+  'tip-list-3': '',         // 팁 목록 9번째 카드 뒤
+  'tip-content-mid': '',    // 팁 본문 중간
 };
 
 interface AdSenseUnitProps {

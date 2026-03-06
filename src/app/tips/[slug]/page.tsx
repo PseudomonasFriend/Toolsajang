@@ -73,6 +73,13 @@ export default async function TipDetailPage({ params }: Props) {
           <MDXRemote source={tip.content} />
         </div>
 
+        {/* 본문 중간 광고 (본문 읽은 직후 — 가시성 높음) */}
+        <AdBanner
+          position="tip-content-mid"
+          type="adsense"
+          className="my-8"
+        />
+
         {/* 추천 툴 배너 */}
         {tip.meta.relatedTools && tip.meta.relatedTools.length > 0 && (
           <RecommendedToolsBanner toolSlugs={tip.meta.relatedTools} />
