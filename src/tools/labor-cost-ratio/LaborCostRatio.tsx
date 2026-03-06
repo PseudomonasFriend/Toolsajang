@@ -5,7 +5,21 @@ import { RotateCcw, Copy, Check, Plus, Trash2 } from 'lucide-react';
 import { calculateLaborCost, INDUSTRY_BENCHMARKS } from './calculation';
 import { formatNumber, parseNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
-import type { LaborCostInput, Employee, PayType } from './types';
+import type { LaborCostInput, LaborCostResult, Employee, PayType } from './types';
+
+/** 진단 색상 맵 */
+const diagnosisColors: Record<LaborCostResult['diagnosisLevel'], string> = {
+  good: 'bg-green-50 text-green-700 border border-green-200',
+  warning: 'bg-amber-50 text-amber-700 border border-amber-200',
+  danger: 'bg-red-50 text-red-700 border border-red-200',
+};
+
+/** 진단 텍스트 색상 맵 */
+const diagnosisTextColors: Record<LaborCostResult['diagnosisLevel'], string> = {
+  good: 'text-green-600',
+  warning: 'text-amber-500',
+  danger: 'text-red-500',
+};
 
 /** 기본 직원 */
 function createDefaultEmployee(): Employee {
@@ -341,11 +355,7 @@ export default function LaborCostRatio() {
                 <span
                   className={cn(
                     'text-2xl font-bold',
-                    result.diagnosisLevel === 'good'
-                      ? 'text-green-600'
-                      : result.diagnosisLevel === 'warning'
-                        ? 'text-amber-500'
-                        : 'text-red-500'
+                    diagnosisTextColors[result.diagnosisLevel]
                   )}
                 >
                   {result.laborCostRatio}%
@@ -399,11 +409,7 @@ export default function LaborCostRatio() {
             <div
               className={cn(
                 'mt-4 rounded-lg p-3 text-sm font-medium',
-                result.diagnosisLevel === 'good'
-                  ? 'bg-green-50 text-green-700 border border-green-200'
-                  : result.diagnosisLevel === 'warning'
-                    ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                    : 'bg-red-50 text-red-700 border border-red-200'
+                diagnosisColors[result.diagnosisLevel]
               )}
             >
               {result.diagnosis}

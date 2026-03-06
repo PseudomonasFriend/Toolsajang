@@ -35,7 +35,7 @@ export const INDUSTRY_BENCHMARKS: IndustryBenchmark[] = [
 function hourlyToMonthly(hourlyPay: number, weeklyHours: number): number {
   // 주휴수당 포함 주당 시간
   const paidWeeklyHours = weeklyHours >= 15
-    ? weeklyHours + Math.min(8, weeklyHours / 5 * 1)
+    ? weeklyHours + Math.min(8, weeklyHours / 5)
     : weeklyHours;
 
   // 월 환산 (4.345주)

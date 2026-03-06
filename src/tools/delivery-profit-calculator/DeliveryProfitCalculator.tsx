@@ -5,7 +5,14 @@ import { RotateCcw, Copy, Check } from 'lucide-react';
 import { calculateDeliveryProfit, DEFAULT_COMMISSION_RATES, DELIVERY_APP_NAMES } from './calculation';
 import { formatNumber, parseNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
-import type { DeliveryProfitInput, DeliveryApp } from './types';
+import type { DeliveryProfitInput, DeliveryProfitResult, DeliveryApp } from './types';
+
+/** 진단 색상 맵 */
+const diagnosisColors: Record<DeliveryProfitResult['diagnosisLevel'], string> = {
+  good: 'bg-green-50 text-green-700 border border-green-200',
+  warning: 'bg-amber-50 text-amber-700 border border-amber-200',
+  danger: 'bg-red-50 text-red-700 border border-red-200',
+};
 
 /** 배달앱 옵션 */
 const DELIVERY_APP_OPTIONS: { value: DeliveryApp; label: string; rate: number }[] = [
@@ -349,11 +356,7 @@ export default function DeliveryProfitCalculator() {
             <div
               className={cn(
                 'mt-4 rounded-lg p-3 text-sm font-medium',
-                result.diagnosisLevel === 'good'
-                  ? 'bg-green-50 text-green-700 border border-green-200'
-                  : result.diagnosisLevel === 'warning'
-                    ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                    : 'bg-red-50 text-red-700 border border-red-200'
+                diagnosisColors[result.diagnosisLevel]
               )}
             >
               {result.diagnosis}

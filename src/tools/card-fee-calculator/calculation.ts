@@ -36,7 +36,6 @@ function getIndustryMultiplier(industry: IndustryType): number {
       return 1.0;
     case 'convenience':
       return 0.95;
-    case 'general':
     default:
       return 1.0;
   }
@@ -51,7 +50,6 @@ function getBusinessTypeMessage(businessType: BusinessType): string {
       return '간이과세자는 부가세 감면 혜택이 있어 실질 부담이 더 낮을 수 있습니다.';
     case 'exempt':
       return '면세사업자는 카드 수수료에 부가세가 포함되지 않습니다.';
-    case 'general':
     default:
       return '';
   }
