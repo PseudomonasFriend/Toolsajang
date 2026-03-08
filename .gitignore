@@ -47,3 +47,5 @@ _tmp_*
 
 # 기타
 *.log
+
+.vercel
