@@ -14,13 +14,13 @@ import { useEffect, useRef } from 'react';
  * - tip-content-mid    : 팁 본문 중간 삽입 (가장 높은 가시성)
  */
 const AD_SLOTS: Record<string, string> = {
-  'tool-result-bottom': '', // 계산기 결과 하단 — AdSense 콘솔에서 생성 후 입력
-  'home-mid': '',           // 홈페이지 중단
-  'tips-bottom': '',        // 팁 본문 하단
-  'tip-list-1': '',         // 팁 목록 3번째 카드 뒤
-  'tip-list-2': '',         // 팁 목록 6번째 카드 뒤
-  'tip-list-3': '',         // 팁 목록 9번째 카드 뒤
-  'tip-content-mid': '',    // 팁 본문 중간
+  'tool-result-bottom': '7252997263', // 계산기 결과 하단
+  'home-mid': '4626833920',           // 홈페이지 중단
+  'tips-bottom': '1337758354',        // 팁 본문 하단
+  'tip-list-1': '2046403043',         // 팁 목록 3번째 카드 뒤
+  'tip-list-2': '1617527205',         // 팁 목록 6번째 카드 뒤
+  'tip-list-3': '1425955517',         // 팁 목록 9번째 카드 뒤
+  'tip-content-mid': '2834672852',    // 팁 본문 중간
 };
 
 interface AdSenseUnitProps {
