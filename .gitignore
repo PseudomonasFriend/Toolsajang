@@ -49,3 +49,6 @@ _tmp_*
 *.log
 
 .vercel
+
+# OMC 내부 상태 파일
+.omc/
