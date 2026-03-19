@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { suggestMenuNames } from '@/lib/llm';
 import type { MenuNameRequest } from '@/lib/llm';
 import { createRateLimiter, getClientIp } from '@/lib/rate-limit';
+import { checkUsageLimit } from '@/lib/usage-tracker';
 
 const MAX_CATEGORY_LEN = 50;
 const MAX_KEYWORDS_LEN = 100;
@@ -49,6 +50,15 @@ export async function POST(request: NextRequest) {
           'X-RateLimit-Reset': String(Math.ceil(rateResult.resetAt / 1000)),
         },
       }
+    );
+  }
+
+  // 주간/월간 비용 한도 확인
+  const usageCheck = checkUsageLimit();
+  if (!usageCheck.allowed) {
+    return NextResponse.json(
+      { error: usageCheck.reason, suggestions: [] },
+      { status: 503 }
     );
   }
 
