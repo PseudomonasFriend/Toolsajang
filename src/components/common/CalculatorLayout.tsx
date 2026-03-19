@@ -31,7 +31,7 @@ export default function CalculatorLayout({
   return (
     <div className="bg-[linear-gradient(180deg,#f8fbff_0%,#f8fafc_32%,#ffffff_100%)]">
       <div className="mx-auto max-w-6xl px-4 py-6 md:px-6 md:py-10">
-        <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+        <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="경로 탐색">
           <Link href="/" className="transition hover:text-blue-600">
             홈
           </Link>
@@ -79,7 +79,7 @@ export default function CalculatorLayout({
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="space-y-6">
-            <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm md:p-6">
+            <section id="main-content" className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm md:p-6">
               {children}
             </section>
 

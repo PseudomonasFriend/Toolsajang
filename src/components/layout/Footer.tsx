@@ -3,7 +3,7 @@ import AdBanner from '@/components/common/AdBanner';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white pb-20 md:pb-6">
+    <footer className="border-t border-gray-200 bg-white pb-20 md:pb-6" aria-label="페이지 하단">
       {/* 푸터 배너 슬롯 */}
       <div className="mx-auto max-w-6xl px-4 pt-4 md:px-6">
         <AdBanner position="footer-banner" type="custom" />

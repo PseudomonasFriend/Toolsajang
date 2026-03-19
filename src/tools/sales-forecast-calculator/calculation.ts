@@ -29,7 +29,7 @@ export function calculateSalesForecast(input: SalesForecastInput): SalesForecast
     case 'traffic': {
       // 유동인구 기반: 유동인구 x 입점률 x 객단가
       const dailyCustomers = Math.round(input.dailyTraffic * (input.captureRate / 100));
-      dailySales = dailyCustomers * input.avgSpending;
+      dailySales = Math.round(dailyCustomers * input.avgSpending);
       monthlySales = dailySales * input.operatingDays;
       methodDescription = '유동인구 기반 예측';
       assumptions.push(

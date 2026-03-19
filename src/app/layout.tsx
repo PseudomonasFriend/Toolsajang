@@ -100,6 +100,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
+      <head>
+        {/* Pretendard 폰트 preload — LCP/FCP 개선 */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <JsonLd id="website-jsonld" data={webSiteJsonLd} />
         <JsonLd id="organization-jsonld" data={organizationJsonLd} />

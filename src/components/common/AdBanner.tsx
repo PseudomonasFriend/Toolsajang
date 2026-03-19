@@ -45,7 +45,8 @@ export default function AdBanner({ position, type, className }: AdBannerProps) {
 
   return (
     <div className={className}>
-      <div className="text-center">
+      {/* min-h로 광고 로드 전 레이아웃 공간 확보 — CLS 방지 */}
+      <div className="min-h-[120px] text-center">
         <span className="mb-1 inline-block text-[10px] text-gray-400">
           광고
         </span>

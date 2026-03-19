@@ -11,6 +11,12 @@ const navItems = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/85 backdrop-blur-md shadow-sm transition-all duration-300">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        본문으로 바로가기
+      </a>
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 md:px-6">
         {/* 로고 */}
         <Link
