@@ -55,13 +55,50 @@ export default async function ToolPage({ params }: PageProps) {
   const url = `${BASE}/tools/${slug}`;
   const toolJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+    '@type': ['SoftwareApplication', 'WebApplication'],
     name: meta.name,
     description: meta.description,
     applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'BusinessApplication',
+    softwareVersion: '1.0',
     operatingSystem: 'All',
     isAccessibleForFree: true,
     url,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'KRW',
+    },
+  };
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '이 계산기는 무료로 사용할 수 있나요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '네, 툴사장닷컴의 모든 계산기는 100% 무료입니다. 로그인이나 회원가입 없이 즉시 사용 가능합니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '모바일에서도 사용할 수 있나요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '네, 모든 기기(PC, 스마트폰, 태블릿)에서 최적화된 화면으로 사용할 수 있습니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '계산 결과는 얼마나 정확한가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '세금·수수료율은 최신 법령 기준을 반영하며, 실제 비즈니스 상황에 따라 결과가 다를 수 있으므로 참고용으로 활용하시기 바랍니다.',
+        },
+      },
+    ],
   };
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -91,6 +128,7 @@ export default async function ToolPage({ params }: PageProps) {
   return (
     <>
       <JsonLd id={`${slug}-tool-jsonld`} data={toolJsonLd} />
+      <JsonLd id={`${slug}-faq-jsonld`} data={faqJsonLd} />
       <JsonLd id={`${slug}-breadcrumb-jsonld`} data={breadcrumbJsonLd} />
       <CalculatorLayout
         title={meta.name}
