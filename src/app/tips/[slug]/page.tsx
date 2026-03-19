@@ -21,15 +21,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tip = getTipBySlug(slug);
   if (!tip) return { title: '장사 팁 | 툴사장' };
   const url = `${BASE}/tips/${slug}`;
+  const ogImageUrl = `${BASE}/tips/${slug}/opengraph-image`;
   return {
     title: tip.meta.title,
     description: tip.meta.description,
+    keywords: tip.meta.tags,
     openGraph: {
       title: tip.meta.title,
       description: tip.meta.description,
       url,
       type: 'article',
       publishedTime: tip.meta.date,
+      images: [{ url: ogImageUrl }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: tip.meta.title,
+      description: tip.meta.description,
     },
     alternates: { canonical: url },
   };
@@ -41,9 +49,13 @@ export default async function TipDetailPage({ params }: Props) {
   if (!tip) notFound();
 
   const allTips = getTipsList();
-  const related = allTips
-    .filter((t) => t.slug !== slug)
-    .slice(0, 3);
+  const sameCategoryTips = allTips.filter(
+    (t) => t.slug !== slug && t.category === tip.meta.category
+  );
+  const otherTips = allTips.filter(
+    (t) => t.slug !== slug && t.category !== tip.meta.category
+  );
+  const related = [...sameCategoryTips, ...otherTips].slice(0, 3);
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -60,7 +72,7 @@ export default async function TipDetailPage({ params }: Props) {
       <JsonLd data={articleJsonLd} />
       <article>
         <header className="mb-8 border-b border-gray-200 pb-6">
-          <p className="text-sm text-gray-500">{tip.meta.date}</p>
+          <time dateTime={tip.meta.date} className="text-sm text-gray-500">{tip.meta.date}</time>
           <h1 className="mt-2 text-2xl font-bold leading-snug text-gray-900">
             {tip.meta.title}
           </h1>
@@ -105,7 +117,7 @@ export default async function TipDetailPage({ params }: Props) {
             <h2 className="mb-3 text-lg font-bold text-gray-900">
               관련 장사 팁
             </h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2" aria-label="관련 장사 팁 목록">
               {related.map((t) => (
                 <li key={t.slug}>
                   <Link

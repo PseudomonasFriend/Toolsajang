@@ -30,13 +30,22 @@ export function calculateLoan(input: LoanInput): LoanOutput {
 
     for (let i = 1; i <= loanMonths; i++) {
       const interestPart = Math.round(balance * monthlyRate);
+
+      // 마지막 회차: 남은 잔액 + 이자로 실제 payment 재계산 (반올림 오차 보정)
+      if (i === loanMonths) {
+        const lastPayment = balance + interestPart;
+        schedule.push({
+          month: i,
+          payment: lastPayment,
+          principalPart: balance,
+          interestPart,
+          balance: 0,
+        });
+        break;
+      }
+
       const principalPart = fixedPayment - interestPart;
       balance = balance - principalPart;
-
-      // 마지막 회차에서 잔액 보정
-      if (i === loanMonths) {
-        balance = 0;
-      }
 
       schedule.push({
         month: i,
@@ -53,13 +62,21 @@ export function calculateLoan(input: LoanInput): LoanOutput {
 
     for (let i = 1; i <= loanMonths; i++) {
       const interestPart = Math.round(balance * monthlyRate);
+
+      // 마지막 회차: 남은 잔액 전부 상환 (반올림 오차 보정)
+      if (i === loanMonths) {
+        schedule.push({
+          month: i,
+          payment: balance + interestPart,
+          principalPart: balance,
+          interestPart,
+          balance: 0,
+        });
+        break;
+      }
+
       const payment = monthlyPrincipal + interestPart;
       balance = balance - monthlyPrincipal;
-
-      // 마지막 회차에서 잔액 보정
-      if (i === loanMonths) {
-        balance = 0;
-      }
 
       schedule.push({
         month: i,

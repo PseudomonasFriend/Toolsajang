@@ -15,7 +15,7 @@ interface MarginResultProps {
 /** 마진 계산기 결과 UI */
 export function MarginResult({ result, isLoss, copied, onCopy }: MarginResultProps) {
   return (
-    <div className="rounded-xl bg-white p-5 shadow-sm">
+    <div className="rounded-xl bg-white p-5 shadow-sm" aria-live="polite" aria-label="계산 결과">
       <h2 className="mb-4 text-base font-bold text-gray-900">
         계산 결과
       </h2>
