@@ -11,7 +11,7 @@ const navItems = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/85 backdrop-blur-md shadow-sm transition-all duration-300">
-      <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 md:px-6">
         {/* 로고 */}
         <Link
           href="/"

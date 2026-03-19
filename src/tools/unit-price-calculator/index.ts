@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '상품 단가 계산·비교로 최저가 찾기',
   icon: 'ShoppingCart',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

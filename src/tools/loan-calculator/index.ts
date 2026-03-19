@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '월 상환액과 총 이자를 한눈에 비교',
   icon: 'Landmark',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

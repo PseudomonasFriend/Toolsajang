@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '메뉴 식재료 원가율과 권장 판매가 계산',
   icon: 'UtensilsCrossed',
   category: '매장운영',
-  isNew: true,
   isActive: true,
 };
 

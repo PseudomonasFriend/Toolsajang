@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '면적별 월세 단가와 임대료 비율 계산',
   icon: 'Building2',
   category: '매장운영',
-  isNew: true,
   isActive: true,
 };
 

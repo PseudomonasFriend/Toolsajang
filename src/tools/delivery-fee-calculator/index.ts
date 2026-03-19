@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '배달앱별 수수료 비교하고 실수령액 확인',
   icon: 'Bike',
   category: '매장운영',
-  isNew: true,
   isActive: true,
 };
 

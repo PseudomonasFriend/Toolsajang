@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-white pb-20 md:pb-6">
       {/* 푸터 배너 슬롯 */}
-      <div className="mx-auto max-w-3xl px-4 pt-4">
+      <div className="mx-auto max-w-6xl px-4 pt-4 md:px-6">
         <AdBanner position="footer-banner" type="custom" />
       </div>
 
-      <div className="mx-auto max-w-3xl px-4 py-8">
+      <div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
         <div className="flex flex-col items-center gap-4 text-center text-sm text-gray-500">
           <div className="flex gap-5 font-medium">
             <Link href="/privacy" className="transition-colors hover:text-blue-600">

@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '재고가 얼마나 빨리 소진되는지 계산',
   icon: 'RefreshCw',
   category: '매장운영',
-  isNew: true,
   isActive: true,
 };
 

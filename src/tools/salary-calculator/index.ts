@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '4대보험 포함 실수령액 계산',
   icon: 'Users',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

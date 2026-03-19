@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '얼마나 팔아야 본전인지 계산',
   icon: 'TrendingUp',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

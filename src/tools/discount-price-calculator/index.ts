@@ -7,7 +7,6 @@ export const meta: Tool = {
   description: '정가와 할인율로 할인가 한 번에',
   icon: 'Percent',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

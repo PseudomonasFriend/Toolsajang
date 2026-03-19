@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import AdBanner from '@/components/common/AdBanner';
 import { getActiveTools, getToolBySlug } from '@/data/tools';
-import { getLatestTips } from '@/lib/tips';
+import { getTipsForTool } from '@/lib/tips';
 
 interface CalculatorLayoutProps {
   title: string;
@@ -26,7 +26,7 @@ export default function CalculatorLayout({
         (!currentTool || tool.category === currentTool.category)
     )
     .slice(0, 4);
-  const latestTips = getLatestTips(3);
+  const relatedTips = getTipsForTool(currentToolSlug, 3);
 
   return (
     <div className="bg-[linear-gradient(180deg,#f8fbff_0%,#f8fafc_32%,#ffffff_100%)]">
@@ -61,6 +61,20 @@ export default function CalculatorLayout({
           <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
             {description}
           </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href="/tools"
+              className="min-h-[44px] rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+            >
+              다른 계산기 찾기
+            </Link>
+            <Link
+              href="/tips"
+              className="min-h-[44px] rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-600"
+            >
+              관련 장사 팁 보기
+            </Link>
+          </div>
         </section>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -68,6 +82,34 @@ export default function CalculatorLayout({
             <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm md:p-6">
               {children}
             </section>
+
+            {relatedTools.length > 0 && (
+              <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm lg:hidden">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-lg font-bold text-slate-900">
+                    바로 이어서 많이 쓰는 계산기
+                  </h2>
+                  <Link
+                    href="/tools"
+                    className="text-sm font-semibold text-blue-600 transition hover:text-blue-700"
+                  >
+                    전체 보기
+                  </Link>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {relatedTools.map((tool) => (
+                    <Link
+                      key={tool.slug}
+                      href={`/tools/${tool.slug}`}
+                      className="block rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 transition hover:border-blue-200 hover:bg-blue-50/60"
+                    >
+                      <p className="font-semibold text-slate-900">{tool.name}</p>
+                      <p className="mt-1 text-sm text-slate-500">{tool.description}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-xl font-bold text-slate-900">
@@ -114,21 +156,25 @@ export default function CalculatorLayout({
           </div>
 
           <aside className="space-y-6">
-            <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900">함께 쓰면 좋은 계산기</h2>
-              <div className="mt-4 space-y-3">
-                {relatedTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={`/tools/${tool.slug}`}
-                    className="block rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 transition hover:border-blue-200 hover:bg-blue-50/60"
-                  >
-                    <p className="font-semibold text-slate-900">{tool.name}</p>
-                    <p className="mt-1 text-sm text-slate-500">{tool.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
+            {relatedTools.length > 0 && (
+              <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm">
+                <h2 className="text-lg font-bold text-slate-900">
+                  함께 쓰면 좋은 계산기
+                </h2>
+                <div className="mt-4 space-y-3">
+                  {relatedTools.map((tool) => (
+                    <Link
+                      key={tool.slug}
+                      href={`/tools/${tool.slug}`}
+                      className="block rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 transition hover:border-blue-200 hover:bg-blue-50/60"
+                    >
+                      <p className="font-semibold text-slate-900">{tool.name}</p>
+                      <p className="mt-1 text-sm text-slate-500">{tool.description}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-sm">
               <div className="flex items-center justify-between gap-3">
@@ -141,7 +187,7 @@ export default function CalculatorLayout({
                 </Link>
               </div>
               <div className="mt-4 space-y-3">
-                {latestTips.map((tip) => (
+                {relatedTips.map((tip) => (
                   <Link
                     key={tip.slug}
                     href={`/tips/${tip.slug}`}

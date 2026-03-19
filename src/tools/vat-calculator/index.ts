@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '공급가액과 부가세를 간편하게 계산',
   icon: 'Receipt',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

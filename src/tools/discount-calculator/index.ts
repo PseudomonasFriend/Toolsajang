@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '할인하면 마진이 얼마나 줄어드는지 비교',
   icon: 'Tag',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 

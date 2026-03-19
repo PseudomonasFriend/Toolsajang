@@ -8,6 +8,20 @@ import {
   Tag,
   Landmark,
   Bike,
+  Target,
+  Building2,
+  Percent,
+  QrCode,
+  CalendarDays,
+  Lightbulb,
+  Type,
+  RefreshCw,
+  ShoppingCart,
+  UtensilsCrossed,
+  Store,
+  CreditCard,
+  BarChart3,
+  Wallet,
 } from 'lucide-react';
 import type { Tool } from '@/types';
 import { getToolBySlug } from '@/data/tools';
@@ -21,6 +35,20 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Tag,
   Landmark,
   Bike,
+  Target,
+  Building2,
+  Percent,
+  QrCode,
+  CalendarDays,
+  Lightbulb,
+  Type,
+  RefreshCw,
+  ShoppingCart,
+  UtensilsCrossed,
+  Store,
+  CreditCard,
+  BarChart3,
+  Wallet,
 };
 
 interface RecommendedToolsBannerProps {

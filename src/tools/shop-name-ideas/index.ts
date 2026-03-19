@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: 'AI로 업종·컨셉 기반 가게 이름 추천',
   icon: 'Store',
   category: '마케팅',
-  isNew: true,
   isActive: true,
 };
 

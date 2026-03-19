@@ -7,7 +7,6 @@ export const meta: Tool = {
   description: 'AI로 메뉴/상품 이름 후보 제안',
   icon: 'Lightbulb',
   category: '마케팅',
-  isNew: true,
   isActive: true,
 };
 

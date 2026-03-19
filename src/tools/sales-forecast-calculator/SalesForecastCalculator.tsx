@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useMemo } from 'react';
+import Link from 'next/link';
 import { RotateCcw, Copy, Check } from 'lucide-react';
 import { calculateSalesForecast } from './calculation';
 import { formatNumber, parseNumber } from '@/lib/format';
@@ -311,7 +312,7 @@ export default function SalesForecastCalculator() {
               <li>- 3가지 방식으로 각각 계산해 교차 검증하세요</li>
               <li>- 보수적(70%)·중간(100%)·낙관적(130%) 시나리오로 범위를 잡으세요</li>
               <li>- 실제 매출은 시즌·날씨·경쟁에 따라 ±30% 변동할 수 있습니다</li>
-              <li>- 손익분기점 확인은 <a href="/tools/break-even-calculator" className="text-blue-600 hover:underline">손익분기점 계산기</a>를 활용하세요</li>
+              <li>- 손익분기점 확인은 <Link href="/tools/break-even-calculator" className="text-blue-600 hover:underline">손익분기점 계산기</Link>를 활용하세요</li>
             </ul>
           </div>
         </>

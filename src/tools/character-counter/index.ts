@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '텍스트 글자수·바이트수 즉시 확인',
   icon: 'Type',
   category: '유틸리티',
-  isNew: true,
   isActive: true,
 };
 

@@ -53,6 +53,20 @@ export function getLatestTips(limit: number): BlogPost[] {
   return getTipsList().slice(0, limit);
 }
 
+/** 특정 툴 slug와 관련된 팁 (relatedTools에 해당 slug가 포함된 팁 우선, 부족하면 최신으로 채움) */
+export function getTipsForTool(toolSlug: string, limit: number): BlogPost[] {
+  const allTips = getTipsList();
+  const related = allTips.filter(
+    (tip) => tip.relatedTools?.includes(toolSlug)
+  );
+  if (related.length >= limit) return related.slice(0, limit);
+  // 부족하면 나머지를 최신 팁에서 채움
+  const remaining = allTips.filter(
+    (tip) => !tip.relatedTools?.includes(toolSlug)
+  );
+  return [...related, ...remaining].slice(0, limit);
+}
+
 /** slug로 장사 팁 한 건 조회 (메타 + 본문) */
 export function getTipBySlug(slug: string): {
   meta: BlogPost;

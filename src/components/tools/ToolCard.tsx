@@ -19,6 +19,9 @@ import {
   ShoppingCart,
   UtensilsCrossed,
   Store,
+  CreditCard,
+  BarChart3,
+  Wallet,
 } from 'lucide-react';
 import type { Tool } from '@/types';
 import { cn } from '@/lib/utils';
@@ -44,6 +47,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   ShoppingCart,
   UtensilsCrossed,
   Store,
+  CreditCard,
+  BarChart3,
+  Wallet,
 };
 
 interface ToolCardProps {
@@ -58,7 +64,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
   const card = (
     <div
       className={cn(
-        'group relative flex h-full min-h-[130px] flex-col items-center justify-center gap-2.5 rounded-2xl bg-white p-4 shadow-sm transition-all duration-300',
+        'group relative flex h-full min-h-[148px] flex-col items-start justify-start gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-300',
         isDisabled
           ? 'cursor-default opacity-60'
           : 'cursor-pointer hover:-translate-y-1 hover:shadow-md active:scale-[0.98]'
@@ -82,10 +88,15 @@ export default function ToolCard({ tool }: ToolCardProps) {
         <Icon className="h-6 w-6 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
       </div>
 
-      <div className="flex flex-col items-center gap-1 text-center">
-        <span className="text-sm font-bold text-gray-900 leading-tight">{tool.name}</span>
-        <span className="text-[11px] text-gray-500 leading-snug">
+      <div className="flex flex-1 flex-col gap-1.5 text-left">
+        <span className="text-sm font-bold leading-tight text-gray-900">
+          {tool.name}
+        </span>
+        <span className="text-[11px] leading-snug text-gray-500">
           {tool.description}
+        </span>
+        <span className="mt-auto text-[11px] font-semibold text-blue-600">
+          바로 계산하기
         </span>
       </div>
     </div>

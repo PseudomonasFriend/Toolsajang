@@ -8,7 +8,6 @@ export const meta: Tool = {
   description: '상품 하나 팔면 얼마 남는지 바로 계산',
   icon: 'Calculator',
   category: '재무/회계',
-  isNew: true,
   isActive: true,
 };
 
