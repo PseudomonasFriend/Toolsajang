@@ -30,9 +30,7 @@ interface AdSenseUnitProps {
 
 /** AdSense ins 태그 렌더링 + adsbygoogle.push() 호출 — 클라이언트 전용 */
 export default function AdSenseUnit({ position, adClient }: AdSenseUnitProps) {
-  const insRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
-
   const slotId = AD_SLOTS[position] ?? '';
 
   useEffect(() => {
@@ -51,7 +49,6 @@ export default function AdSenseUnit({ position, adClient }: AdSenseUnitProps) {
 
   return (
     <ins
-      ref={insRef}
       className="adsbygoogle block"
       data-ad-client={adClient}
       data-ad-slot={slotId}

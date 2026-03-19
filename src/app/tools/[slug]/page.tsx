@@ -60,8 +60,10 @@ export default async function ToolPage({ params }: PageProps) {
     description: meta.description,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'All',
+    inLanguage: 'ko-KR',
     isAccessibleForFree: true,
     url,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
   };
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',

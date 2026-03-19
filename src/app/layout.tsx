@@ -119,13 +119,15 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        <Script
-          id="adsense-script"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6162400610480124"
-          strategy="afterInteractive"
-          async
-          crossOrigin="anonymous"
-        />
+        {process.env.NEXT_PUBLIC_ADSENSE_ID && (
+          <Script
+            id="adsense-script"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+            strategy="afterInteractive"
+            async
+            crossOrigin="anonymous"
+          />
+        )}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: tip.meta.title,
     description: tip.meta.description,
+    keywords: tip.meta.tags?.length ? tip.meta.tags : undefined,
     openGraph: {
       title: tip.meta.title,
       description: tip.meta.description,
@@ -41,9 +42,14 @@ export default async function TipDetailPage({ params }: Props) {
   if (!tip) notFound();
 
   const allTips = getTipsList();
-  const related = allTips
-    .filter((t) => t.slug !== slug)
-    .slice(0, 3);
+  // 같은 카테고리 팁 우선, 부족하면 최신 팁으로 채움
+  const sameCategoryTips = allTips.filter(
+    (t) => t.slug !== slug && t.category === tip.meta.category
+  );
+  const otherTips = allTips.filter(
+    (t) => t.slug !== slug && t.category !== tip.meta.category
+  );
+  const related = [...sameCategoryTips, ...otherTips].slice(0, 3);
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -51,16 +57,28 @@ export default async function TipDetailPage({ params }: Props) {
     headline: tip.meta.title,
     description: tip.meta.description,
     datePublished: tip.meta.date,
-    author: { '@type': 'Organization', name: tip.meta.author },
+    inLanguage: 'ko-KR',
+    author: { '@type': 'Organization', name: tip.meta.author ?? '툴사장' },
+    publisher: { '@type': 'Organization', name: '툴사장', url: BASE },
     url: `${BASE}/tips/${slug}`,
+  };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: BASE },
+      { '@type': 'ListItem', position: 2, name: '장사 팁', item: `${BASE}/tips` },
+      { '@type': 'ListItem', position: 3, name: tip.meta.title, item: `${BASE}/tips/${slug}` },
+    ],
   };
 
   return (
     <div className="mx-auto max-w-[720px] px-4 py-8 pb-24">
       <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <article>
         <header className="mb-8 border-b border-gray-200 pb-6">
-          <p className="text-sm text-gray-500">{tip.meta.date}</p>
+          <time dateTime={tip.meta.date} className="text-sm text-gray-500">{tip.meta.date}</time>
           <h1 className="mt-2 text-2xl font-bold leading-snug text-gray-900">
             {tip.meta.title}
           </h1>

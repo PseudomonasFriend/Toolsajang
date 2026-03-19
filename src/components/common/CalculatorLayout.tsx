@@ -31,7 +31,7 @@ export default function CalculatorLayout({
   return (
     <div className="bg-[linear-gradient(180deg,#f8fbff_0%,#f8fafc_32%,#ffffff_100%)]">
       <div className="mx-auto max-w-6xl px-4 py-6 md:px-6 md:py-10">
-        <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+        <nav aria-label="경로 탐색" className="mb-4 flex flex-wrap items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="transition hover:text-blue-600">
             홈
           </Link>
