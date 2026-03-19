@@ -15,7 +15,7 @@ export const meta: Tool = {
 export const seo = {
   title: '직원 급여 계산기 - 4대보험 실수령액 계산',
   description:
-    '월 급여를 입력하면 4대보험 공제 후 실수령액과 사업주 부담금을 즉시 계산합니다.',
+    '월 급여를 입력하면 국민연금·건강보험·고용보험 공제 후 직원 실수령액과 사업주 4대보험 부담금을 즉시 계산합니다. 인건비 총액 계획에 활용하세요.',
 };
 
 export const Component = SalaryCalculator;

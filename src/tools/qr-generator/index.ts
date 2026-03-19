@@ -13,7 +13,7 @@ export const meta: Tool = {
 export const seo = {
   title: 'QR코드 생성기 - URL·텍스트 QR 무료 생성',
   description:
-    'URL이나 텍스트를 입력하면 QR코드 이미지를 생성합니다. PNG 다운로드 지원. 메뉴판·명함용.',
+    'URL·전화번호·텍스트를 입력하면 QR코드를 즉시 생성합니다. PNG 다운로드 지원. 매장 메뉴판, 테이블 스탠드, 명함 제작에 바로 활용할 수 있는 무료 도구.',
 };
 
 export const Component = QrGenerator;

@@ -15,7 +15,7 @@ export const meta: Tool = {
 export const seo = {
   title: '배달앱 수수료 계산기 - 배민/쿠팡이츠/요기요 비교',
   description:
-    '배달앱 플랫폼별 수수료를 비교하고 메뉴 하나 팔았을 때 실수령액과 순이익을 계산합니다.',
+    '배민·쿠팡이츠·요기요 플랫폼별 수수료율을 비교하고 주문 금액별 실수령액과 순이익을 즉시 계산합니다. 배달앱 입점 전 수익성 검토에 필수입니다.',
 };
 
 export const Component = DeliveryFeeCalculator;
