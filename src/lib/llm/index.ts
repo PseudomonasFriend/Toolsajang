@@ -3,6 +3,7 @@ import type { SuggestOptions } from './types';
 import { generateWithGemini } from './providers/gemini';
 import { generateWithGroq } from './providers/groq';
 import { generateWithOpenRouter } from './providers/openrouter';
+import { recordUsage } from '@/lib/usage-tracker';
 
 const SYSTEM_PROMPT = `당신은 소상공인·자영업자를 위한 메뉴명 추천 전문가입니다.
 다음 규칙을 반드시 지키세요.
@@ -58,7 +59,7 @@ export async function suggestMenuNames(
   const userPrompt = buildUserPrompt(req);
   const count = Math.min(15, Math.max(5, req.count));
 
-  const providers: Array<{ id: ProviderId; fn: () => Promise<{ text: string }> }> = [];
+  const providers: Array<{ id: ProviderId; fn: () => Promise<{ text: string; promptTokens?: number; candidateTokens?: number }> }> = [];
 
   if (process.env.GEMINI_API_KEY) {
     providers.push({
@@ -107,9 +108,13 @@ export async function suggestMenuNames(
   let lastError: Error | null = null;
   for (const { id, fn } of providers) {
     try {
-      const { text } = await fn();
-      const suggestions = parseSuggestions(text, count);
+      const result = await fn();
+      const suggestions = parseSuggestions(result.text, count);
       if (suggestions.length > 0) {
+        // Gemini 호출 성공 시 토큰 사용량 기록
+        if (id === 'gemini') {
+          recordUsage(result.promptTokens, result.candidateTokens);
+        }
         return { suggestions, provider: id };
       }
     } catch (e) {
@@ -145,7 +150,7 @@ export async function suggestShopNames(
   const userPrompt = buildShopNameUserPrompt(req);
   const count = Math.min(15, Math.max(5, req.count));
 
-  const providers: Array<{ id: ProviderId; fn: () => Promise<{ text: string }> }> = [];
+  const providers: Array<{ id: ProviderId; fn: () => Promise<{ text: string; promptTokens?: number; candidateTokens?: number }> }> = [];
 
   if (process.env.GEMINI_API_KEY) {
     providers.push({
@@ -194,9 +199,13 @@ export async function suggestShopNames(
   let lastError: Error | null = null;
   for (const { id, fn } of providers) {
     try {
-      const { text } = await fn();
-      const suggestions = parseSuggestions(text, count);
+      const result = await fn();
+      const suggestions = parseSuggestions(result.text, count);
       if (suggestions.length > 0) {
+        // Gemini 호출 성공 시 토큰 사용량 기록
+        if (id === 'gemini') {
+          recordUsage(result.promptTokens, result.candidateTokens);
+        }
         return { suggestions, provider: id };
       }
     } catch (e) {
