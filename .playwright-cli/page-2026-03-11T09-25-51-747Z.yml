@@ -1,0 +1,248 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "툴사장 홈으로 이동" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img [ref=e6]
+      - generic [ref=e8]: 툴사장
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - heading "전체 툴" [level=1] [ref=e11]
+      - generic [ref=e12]:
+        - tablist "툴 카테고리 필터" [ref=e13]:
+          - tab "전체" [selected] [ref=e14]
+          - tab "재무/회계" [ref=e15]
+          - tab "매장운영" [ref=e16]
+          - tab "마케팅" [ref=e17]
+          - tab "유틸리티" [ref=e18]
+        - generic [ref=e19]:
+          - link "마진 계산기 바로가기" [ref=e20] [cursor=pointer]:
+            - /url: /tools/margin-calculator
+            - generic [ref=e21]:
+              - generic [ref=e22]: NEW
+              - img [ref=e24]
+              - generic [ref=e26]:
+                - generic [ref=e27]: 마진 계산기
+                - generic [ref=e28]: 상품 하나 팔면 얼마 남는지 바로 계산
+          - link "부가세 계산기 바로가기" [ref=e29] [cursor=pointer]:
+            - /url: /tools/vat-calculator
+            - generic [ref=e30]:
+              - generic [ref=e31]: NEW
+              - img [ref=e33]
+              - generic [ref=e36]:
+                - generic [ref=e37]: 부가세 계산기
+                - generic [ref=e38]: 공급가액과 부가세를 간편하게 계산
+          - link "손익분기점 계산기 바로가기" [ref=e39] [cursor=pointer]:
+            - /url: /tools/break-even-calculator
+            - generic [ref=e40]:
+              - generic [ref=e41]: NEW
+              - img [ref=e43]
+              - generic [ref=e46]:
+                - generic [ref=e47]: 손익분기점 계산기
+                - generic [ref=e48]: 얼마나 팔아야 본전인지 계산
+          - link "직원 급여 계산기 바로가기" [ref=e49] [cursor=pointer]:
+            - /url: /tools/salary-calculator
+            - generic [ref=e50]:
+              - generic [ref=e51]: NEW
+              - img [ref=e53]
+              - generic [ref=e58]:
+                - generic [ref=e59]: 직원 급여 계산기
+                - generic [ref=e60]: 4대보험 포함 실수령액 계산
+          - link "할인율 계산기 바로가기" [ref=e61] [cursor=pointer]:
+            - /url: /tools/discount-calculator
+            - generic [ref=e62]:
+              - generic [ref=e63]: NEW
+              - img [ref=e65]
+              - generic [ref=e68]:
+                - generic [ref=e69]: 할인율 계산기
+                - generic [ref=e70]: 할인하면 마진이 얼마나 줄어드는지 비교
+          - link "대출 이자 계산기 바로가기" [ref=e71] [cursor=pointer]:
+            - /url: /tools/loan-calculator
+            - generic [ref=e72]:
+              - generic [ref=e73]: NEW
+              - img [ref=e75]
+              - generic [ref=e77]:
+                - generic [ref=e78]: 대출 이자 계산기
+                - generic [ref=e79]: 월 상환액과 총 이자를 한눈에 비교
+          - link "배달앱 수수료 계산기 바로가기" [ref=e80] [cursor=pointer]:
+            - /url: /tools/delivery-fee-calculator
+            - generic [ref=e81]:
+              - generic [ref=e82]: NEW
+              - img [ref=e84]
+              - generic [ref=e89]:
+                - generic [ref=e90]: 배달앱 수수료 계산기
+                - generic [ref=e91]: 배달앱별 수수료 비교하고 실수령액 확인
+          - link "매출 목표 계산기 바로가기" [ref=e92] [cursor=pointer]:
+            - /url: /tools/sales-target-calculator
+            - generic [ref=e93]:
+              - generic [ref=e94]: NEW
+              - img [ref=e96]
+              - generic [ref=e100]:
+                - generic [ref=e101]: 매출 목표 계산기
+                - generic [ref=e102]: 목표 순이익 달성에 필요한 매출 역산
+          - link "임대료 비율 계산기 바로가기" [ref=e103] [cursor=pointer]:
+            - /url: /tools/rent-ratio-calculator
+            - generic [ref=e104]:
+              - generic [ref=e105]: NEW
+              - img [ref=e107]
+              - generic [ref=e111]:
+                - generic [ref=e112]: 임대료 비율 계산기
+                - generic [ref=e113]: 매출 대비 임대료가 몇 %인지 한눈에
+          - link "할인가 역산 계산기 바로가기" [ref=e114] [cursor=pointer]:
+            - /url: /tools/discount-price-calculator
+            - generic [ref=e115]:
+              - generic [ref=e116]: NEW
+              - img [ref=e118]
+              - generic [ref=e122]:
+                - generic [ref=e123]: 할인가 역산 계산기
+                - generic [ref=e124]: 정가와 할인율로 할인가 한 번에
+          - link "QR코드 생성기 바로가기" [ref=e125] [cursor=pointer]:
+            - /url: /tools/qr-generator
+            - generic [ref=e126]:
+              - generic [ref=e127]: NEW
+              - img [ref=e129]
+              - generic [ref=e135]:
+                - generic [ref=e136]: QR코드 생성기
+                - generic [ref=e137]: URL·텍스트로 QR코드 만들고 다운로드
+          - link "D-day / 기간 계산기 바로가기" [ref=e138] [cursor=pointer]:
+            - /url: /tools/dday-calculator
+            - generic [ref=e139]:
+              - generic [ref=e140]: NEW
+              - img [ref=e142]
+              - generic [ref=e144]:
+                - generic [ref=e145]: D-day / 기간 계산기
+                - generic [ref=e146]: 목표일까지 며칠 남았는지 한눈에
+          - link "메뉴명 아이디어 바로가기" [ref=e147] [cursor=pointer]:
+            - /url: /tools/menu-name-ideas
+            - generic [ref=e148]:
+              - generic [ref=e149]: NEW
+              - img [ref=e151]
+              - generic [ref=e153]:
+                - generic [ref=e154]: 메뉴명 아이디어
+                - generic [ref=e155]: AI로 메뉴/상품 이름 후보 제안
+          - link "글자수 카운터 바로가기" [ref=e156] [cursor=pointer]:
+            - /url: /tools/character-counter
+            - generic [ref=e157]:
+              - generic [ref=e158]: NEW
+              - img [ref=e160]
+              - generic [ref=e162]:
+                - generic [ref=e163]: 글자수 카운터
+                - generic [ref=e164]: 텍스트 글자수·바이트수 즉시 확인
+          - link "재고 회전율 계산기 바로가기" [ref=e165] [cursor=pointer]:
+            - /url: /tools/inventory-turnover
+            - generic [ref=e166]:
+              - generic [ref=e167]: NEW
+              - img [ref=e169]
+              - generic [ref=e174]:
+                - generic [ref=e175]: 재고 회전율 계산기
+                - generic [ref=e176]: 재고가 얼마나 빨리 소진되는지 계산
+          - link "단가 계산기 바로가기" [ref=e177] [cursor=pointer]:
+            - /url: /tools/unit-price-calculator
+            - generic [ref=e178]:
+              - generic [ref=e179]: NEW
+              - img [ref=e181]
+              - generic [ref=e185]:
+                - generic [ref=e186]: 단가 계산기
+                - generic [ref=e187]: 상품 단가 계산·비교로 최저가 찾기
+          - link "평당 임대료 계산기 바로가기" [ref=e188] [cursor=pointer]:
+            - /url: /tools/rent-per-pyeong
+            - generic [ref=e189]:
+              - generic [ref=e190]: NEW
+              - img [ref=e192]
+              - generic [ref=e196]:
+                - generic [ref=e197]: 평당 임대료 계산기
+                - generic [ref=e198]: 면적별 월세 단가와 임대료 비율 계산
+          - link "원가율 계산기 바로가기" [ref=e199] [cursor=pointer]:
+            - /url: /tools/food-cost-calculator
+            - generic [ref=e200]:
+              - generic [ref=e201]: NEW
+              - img [ref=e203]
+              - generic [ref=e208]:
+                - generic [ref=e209]: 원가율 계산기
+                - generic [ref=e210]: 메뉴 식재료 원가율과 권장 판매가 계산
+          - link "가게명 아이디어 바로가기" [ref=e211] [cursor=pointer]:
+            - /url: /tools/shop-name-ideas
+            - generic [ref=e212]:
+              - generic [ref=e213]: NEW
+              - img [ref=e215]
+              - generic [ref=e219]:
+                - generic [ref=e220]: 가게명 아이디어
+                - generic [ref=e221]: AI로 업종·컨셉 기반 가게 이름 추천
+          - link "카드수수료 계산기 바로가기" [ref=e222] [cursor=pointer]:
+            - /url: /tools/card-fee-calculator
+            - generic [ref=e223]:
+              - generic [ref=e224]: NEW
+              - img [ref=e226]
+              - generic [ref=e228]:
+                - generic [ref=e229]: 카드수수료 계산기
+                - generic [ref=e230]: 월 카드매출 기준 카드사별 수수료와 실수령액 계산
+          - link "인건비 비율 계산기 바로가기" [ref=e231] [cursor=pointer]:
+            - /url: /tools/labor-cost-ratio
+            - generic [ref=e232]:
+              - generic [ref=e233]: NEW
+              - img [ref=e235]
+              - generic [ref=e240]:
+                - generic [ref=e241]: 인건비 비율 계산기
+                - generic [ref=e242]: 매출 대비 인건비 비율과 4대보험 부담금 계산
+          - link "배달 순이익 계산기 바로가기" [ref=e243] [cursor=pointer]:
+            - /url: /tools/delivery-profit-calculator
+            - generic [ref=e244]:
+              - generic [ref=e245]: NEW
+              - img [ref=e247]
+              - generic [ref=e252]:
+                - generic [ref=e253]: 배달 순이익 계산기
+                - generic [ref=e254]: 배달앱 주문의 수수료·원가 차감 후 순이익 계산
+          - link "창업비용 계산기 바로가기" [ref=e255] [cursor=pointer]:
+            - /url: /tools/startup-cost-calculator
+            - generic [ref=e256]:
+              - generic [ref=e257]: NEW
+              - img [ref=e259]
+              - generic [ref=e263]:
+                - generic [ref=e264]: 창업비용 계산기
+                - generic [ref=e265]: 보증금·권리금·인테리어 등 항목별 창업비용과 예비비 합산 계산
+          - link "월 고정비 계산기 바로가기" [ref=e266] [cursor=pointer]:
+            - /url: /tools/monthly-expense-calculator
+            - generic [ref=e267]:
+              - generic [ref=e268]: NEW
+              - img [ref=e270]
+              - generic [ref=e273]:
+                - generic [ref=e274]: 월 고정비 계산기
+                - generic [ref=e275]: 임대료·인건비·공과금 등 월 고정비 합산 및 카테고리별 비중 분석
+          - link "매출예측 계산기 바로가기" [ref=e276] [cursor=pointer]:
+            - /url: /tools/sales-forecast-calculator
+            - generic [ref=e277]:
+              - generic [ref=e278]: NEW
+              - img [ref=e280]
+              - generic [ref=e283]:
+                - generic [ref=e284]: 매출예측 계산기
+                - generic [ref=e285]: 좌석 회전율·유동인구·업종 평균 3가지 방식으로 예상 매출 계산
+  - contentinfo [ref=e286]:
+    - generic [ref=e289]:
+      - generic [ref=e290]:
+        - link "개인정보처리방침" [ref=e291] [cursor=pointer]:
+          - /url: /privacy
+        - link "이용약관" [ref=e292] [cursor=pointer]:
+          - /url: /terms
+        - link "서비스 소개" [ref=e293] [cursor=pointer]:
+          - /url: /about
+      - paragraph [ref=e294]: © 2026 툴사장. All rights reserved.
+  - navigation "모바일 메뉴" [ref=e295]:
+    - generic [ref=e296]:
+      - link "홈" [ref=e297] [cursor=pointer]:
+        - /url: /
+        - img [ref=e298]
+        - generic [ref=e301]: 홈
+      - link "툴" [ref=e302] [cursor=pointer]:
+        - /url: /tools
+        - img [ref=e303]
+        - generic [ref=e305]: 툴
+      - link "장사 팁" [ref=e306] [cursor=pointer]:
+        - /url: /tips
+        - img [ref=e307]
+        - generic [ref=e310]: 장사 팁
+      - link "소개" [ref=e311] [cursor=pointer]:
+        - /url: /about
+        - img [ref=e312]
+        - generic [ref=e314]: 소개
+  - button "Open Next.js Dev Tools" [ref=e320] [cursor=pointer]:
+    - img [ref=e321]
+  - alert [ref=e324]

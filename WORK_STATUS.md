@@ -1,11 +1,12 @@
 # 툴사장 — 작업 현황 (WORK STATUS)
 
-> 최종 업데이트: 2026-03-17 (대규모 리팩토링 + 고도화)
+> 최종 업데이트: 2026-03-20 (Phase D R2: 장사 팁 10편 추가 53→63개)
 
 ---
 
 ## 완료된 작업
 
+- Phase D R2: 장사 팁 10편 추가 53→63개 (2026-03-20): SNS마케팅, 고객불만대응, 해피아워전략, 구글지도상위노출, 명함디자인비용절약, 프랜차이즈vs독립창업, 배달포장비용절약, 계절메뉴기획, 저비용직원동기부여, 소상공인세금절약. 빌드 103페이지, /tips/[slug] 63개 SSG ✅, ESLint 0 ✅
 - 대규모 리팩토링 + 고도화 (2026-03-17): ToolCard/RecommendedToolsBanner 아이콘맵 완성(CreditCard 등 누락 아이콘 추가), isNew 배지 정리(최신 6개만 NEW 표시), 장사 팁 목록 페이지 와이드 레이아웃+카테고리 태그 개편(max-w-[480px]→max-w-6xl 그리드), CalculatorLayout 관련 팁 컨텍스트 인식(relatedTools 역참조), ESLint 에러 3건 수정(unescaped entities, html anchor→Link), 검색 UI 오타 수정, 테스트 56개 추가(6개 계산기 — card-fee/delivery-profit/labor-cost-ratio/monthly-expense/sales-forecast/startup-cost), CLAUDE.md 수치 갱신(25툴/52팁). `next build`+`eslint 0에러`+`vitest 22파일 266개 테스트` 전수 통과
 - 툴 탐색 UX 개편 (2026-03-11): `/tools`를 좁은 목록형에서 검색+상황별 탐색 구조로 개편, 데스크톱 폭을 `max-w-6xl` 기준으로 확장, 카테고리별 개수·빠른 시나리오 검색·상단 긴급 계산기 영역 추가. 계산기 상세는 모바일에서 결과 확인 직후 관련 계산기로 바로 이어지도록 CTA/추천 섹션을 상단에 재배치했고 `next build`, `tsc --noEmit`, `vitest 210개` 재검증 완료
 - UX/SEO 정비 (2026-03-08): 홈을 운영형 랜딩으로 재구성, 계산기 상세에 내부 링크/맥락 섹션 추가, layout 스크립트 구조 정리로 hydration 오류 제거, production E2E 재검증 완료
