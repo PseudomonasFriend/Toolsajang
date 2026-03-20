@@ -59,7 +59,7 @@ function getMonthStart(now: number): number {
 
 /** 모듈 레벨 싱글턴 (Node.js 프로세스 생존 동안 유지) */
 declare global {
-  // eslint-disable-next-line no-var
+   
   var __aiUsageState: UsageState | undefined;
 }
 
