@@ -52,3 +52,17 @@ _tmp_*
 
 # OMC 내부 상태 파일
 .omc/
+
+# 로그
+*.log
+
+# 임시 파일
+_tmp_*/
+
+# Claude/OMC
+.claude/
+.omc/
+.playwright-mcp/
+
+# 테스트 결과
+test-results/
