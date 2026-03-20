@@ -24,6 +24,7 @@ export async function generateMetadata({
   if (!mod) return {};
 
   const url = `${BASE}/tools/${slug}`;
+  const ogImageUrl = `${BASE}/tools/${slug}/opengraph-image`;
   return {
     title: mod.seo.title,
     description: mod.seo.description,
@@ -31,15 +32,26 @@ export async function generateMetadata({
       mod.meta.name,
       `${mod.meta.name} 무료`,
       `${mod.meta.name} 온라인`,
+      `${mod.meta.name} 계산`,
       `${mod.meta.category} 계산기`,
       '사장님 계산기',
+      '소상공인 계산기',
+      '자영업자 계산기',
       '무료 비즈니스 툴',
+      '툴사장',
     ],
     openGraph: {
       title: mod.seo.title,
       description: mod.seo.description,
       url,
       type: 'website',
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: mod.meta.name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: mod.seo.title,
+      description: mod.seo.description,
+      images: [ogImageUrl],
     },
     alternates: { canonical: url },
   };

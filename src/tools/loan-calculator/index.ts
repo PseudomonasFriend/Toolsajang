@@ -15,7 +15,7 @@ export const meta: Tool = {
 export const seo = {
   title: '대출 이자 계산기 - 원금균등/원리금균등 비교',
   description:
-    '대출 원금, 이자율, 기간을 입력하면 월 상환액과 총 이자를 즉시 계산하고 상환 스케줄을 확인합니다.',
+    '대출 원금·이자율·기간을 입력하면 원금균등·원리금균등 방식별 월 상환액과 총 이자를 비교합니다. 창업 대출·임대 보증금 마련 전 자금 계획에 활용하세요.',
 };
 
 export const Component = LoanCalculator;

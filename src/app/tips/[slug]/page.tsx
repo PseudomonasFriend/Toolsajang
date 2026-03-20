@@ -57,14 +57,25 @@ export default async function TipDetailPage({ params }: Props) {
   );
   const related = [...sameCategoryTips, ...otherTips].slice(0, 3);
 
+  const articleUrl = `${BASE}/tips/${slug}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
     headline: tip.meta.title,
     description: tip.meta.description,
     datePublished: tip.meta.date,
-    author: { '@type': 'Organization', name: tip.meta.author },
-    url: `${BASE}/tips/${slug}`,
+    dateModified: tip.meta.date,
+    author: { '@type': 'Organization', name: tip.meta.author || '툴사장' },
+    publisher: {
+      '@type': 'Organization',
+      name: '툴사장',
+      url: BASE,
+      logo: { '@type': 'ImageObject', url: `${BASE}/images/logo.png` },
+    },
+    url: articleUrl,
+    inLanguage: 'ko-KR',
+    image: `${BASE}/tips/${slug}/opengraph-image`,
   };
 
   return (

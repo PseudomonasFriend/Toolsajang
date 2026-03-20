@@ -18,6 +18,14 @@ const webSiteJsonLd = {
   url: SITE_URL,
   description: SITE_DESC,
   inLanguage: 'ko-KR',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_URL}/tools?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 const organizationJsonLd = {
@@ -26,6 +34,8 @@ const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESC,
+  inLanguage: 'ko-KR',
+  sameAs: [SITE_URL],
 };
 
 export const viewport: Viewport = {
@@ -105,6 +115,10 @@ export default function RootLayout({
         <link
           rel="preload"
           as="style"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+        <link
+          rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
       </head>
