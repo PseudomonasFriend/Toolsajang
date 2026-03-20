@@ -74,6 +74,7 @@ export default async function ToolPage({ params }: PageProps) {
     applicationSubCategory: 'BusinessApplication',
     softwareVersion: '1.0',
     operatingSystem: 'All',
+    inLanguage: 'ko-KR',
     isAccessibleForFree: true,
     url,
     offers: {

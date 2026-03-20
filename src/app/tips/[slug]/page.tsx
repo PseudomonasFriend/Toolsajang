@@ -77,10 +77,20 @@ export default async function TipDetailPage({ params }: Props) {
     inLanguage: 'ko-KR',
     image: `${BASE}/tips/${slug}/opengraph-image`,
   };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: BASE },
+      { '@type': 'ListItem', position: 2, name: '장사 팁', item: `${BASE}/tips` },
+      { '@type': 'ListItem', position: 3, name: tip.meta.title, item: `${BASE}/tips/${slug}` },
+    ],
+  };
 
   return (
     <div className="mx-auto max-w-[720px] px-4 py-8 pb-24">
       <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <article>
         <header className="mb-8 border-b border-gray-200 pb-6">
           <time dateTime={tip.meta.date} className="text-sm text-gray-500">{tip.meta.date}</time>
