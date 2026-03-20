@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 프로젝트 개요
 
-한국 소상공인·자영업자가 로그인 없이 3초 만에 비즈니스 계산 결과를 얻을 수 있는 무료 플랫폼. 계산기 25종 + 장사 팁 52개를 제공하며 Google AdSense로 수익화한다.
+한국 소상공인·자영업자가 로그인 없이 3초 만에 비즈니스 계산 결과를 얻을 수 있는 무료 플랫폼. 계산기 28종 + 장사 팁 68개를 제공하며 Google AdSense로 수익화한다.
 - 도메인: https://toolsajang.com
 - 배포: Vercel (GitHub main 브랜치 자동 배포)
 - 수익 모델: Google AdSense + 자사 서비스 크로스 프로모션 배너
