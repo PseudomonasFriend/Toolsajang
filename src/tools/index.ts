@@ -27,6 +27,9 @@ import * as deliveryProfitCalculator from './delivery-profit-calculator';
 import * as startupCostCalculator from './startup-cost-calculator';
 import * as monthlyExpenseCalculator from './monthly-expense-calculator';
 import * as salesForecastCalculator from './sales-forecast-calculator';
+import * as hourlyWageCalculator from './hourly-wage-calculator';
+import * as optimalRentCalculator from './optimal-rent-calculator';
+import * as taxWithholdingCalculator from './tax-withholding-calculator';
 
 /** 툴 모듈 타입 */
 interface ToolModule {
@@ -62,6 +65,9 @@ const toolModules: Record<string, ToolModule> = {
   [startupCostCalculator.meta.slug]: startupCostCalculator,
   [monthlyExpenseCalculator.meta.slug]: monthlyExpenseCalculator,
   [salesForecastCalculator.meta.slug]: salesForecastCalculator,
+  [hourlyWageCalculator.meta.slug]: hourlyWageCalculator,
+  [optimalRentCalculator.meta.slug]: optimalRentCalculator,
+  [taxWithholdingCalculator.meta.slug]: taxWithholdingCalculator,
 };
 
 /* === 외부에서 사용하는 함수들 === */
